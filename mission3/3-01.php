@@ -17,7 +17,7 @@
     $name = $_POST["name"];  // 名前を取得
     $text = $_POST["text"];  // コメントを取得
     
-    // nameとtextに値が入力されているとき
+    // nameとtextに値が入力されたとき
     if ($name != NULL && $text != NULL) {
 
       $f_name = "mission_3-1.txt";  // ファイル名を指定
@@ -27,10 +27,10 @@
       $number = count($f) + 1;  // 次回投稿番号を取得
       $date = date("Y/m/d H:i:s");  // 現在の日時を取得
 
-      $f_post = "$number<>$name<>$text<>$date";
+      $f_post = "$number<>$name<>$text<>$date";  // 投稿内容
 
-      fwrite($handle, $f_post.PHP_EOL);
-      fclose($handle);
+      fwrite($handle, $f_post.PHP_EOL);  // ファイルに投稿
+      fclose($handle);  // ファイルを閉じる
 
     } else {
       echo "名前とコメントを入力してください。";
