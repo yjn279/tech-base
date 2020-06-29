@@ -34,7 +34,7 @@
   <h3>投稿の削除はこちら</h3>
   <form action="" method="POST">
     <input type="number" placeholder="投稿番号を入力" name="number" required>
-    <input type="password" placeholder="パスワードを設定" name="password" required>
+    <input type="password" placeholder="パスワードを入力" name="password" required>
     <input type="submit" value="削除" name="form_3">
   </form>
   <br>
