@@ -91,7 +91,7 @@
             // パスワード認証
             if ($password == $r[4]) {
 
-              $f_post = "{$r[0]}<>{$r[1]}<>{$text}<>{$r[3]}<>{$r[4]}<>";  // 投稿内容
+              $f_post = "{$r[0]}<>{$r[1]}<>$text<>$date<>{$r[4]}<>";  // 投稿内容
               fwrite($handle, $f_post.PHP_EOL);
               echo "投稿を修正しました。<br><br>";
 
