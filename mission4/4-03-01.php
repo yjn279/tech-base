@@ -9,9 +9,9 @@
   $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 
 
-  // テーブル削除
+  // テーブルを一覧表示
 
-  $sql ='DROP TABLE IF EXISTS tbtest42, tbtest421, tbtest422;';
+  $sql ='SHOW TABLES;';
   $result = $pdo -> query($sql);
   
 	foreach ($result as $row){
