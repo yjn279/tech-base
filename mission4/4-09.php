@@ -11,7 +11,7 @@
 
   // テーブル削除
 
-  $sql ='DROP TABLE IF EXISTS tbtest42, tbtest421, tbtest422;';
+  $sql ='DROP TABLE tbtest';
   $result = $pdo -> query($sql);
   
 	foreach ($result as $row){
