@@ -30,6 +30,7 @@
     $date = date("Y/m/d H:i:s");  // 現在の日時を取得
     $f_name = "mission_3-3.txt";  // ファイル名を指定
 
+    touch($f_name);  // ファイルを新規作成
     $f = file($f_name, FILE_IGNORE_NEW_LINES);  // ファイルの内容を取得
     $number = count($f) + 1;  // 次回投稿番号を取得
 
@@ -37,6 +38,10 @@
 
 
     // ファイル操作
+
+
+    // 新規投稿
+
     if ($name != NULL && $text != NULL && $delete == NULL) {
 
       $handle = fopen($f_name, "a");
@@ -44,35 +49,58 @@
       fclose($handle);
       echo "投稿しました。<br>";
 
+
+    // 投稿削除
+
     } elseif ($name == NULL && $text == NULL && $delete != NULL) {
-      
+
       $handle = fopen($f_name, "w");
 
       foreach ($f as $row) {
 
         $r = explode("<>", $row);  // 投稿内容を分割して取得
 
+        // 投稿番号が削除番号より小さいとき
         if ($r[0] < $delete) {
+
           $number = $r[0];
+
+        // 投稿番号が削除番号より大きいとき
         } elseif ($r[0] > $delete) {
-          $number = $r[0] - 1;
+
+          $rows = count(file($f_name, FILE_IGNORE_NEW_LINES)) + 1;  // 次回投稿番号を取得
+
+          // 投稿が削除されたとき
+          if ($r[0] > $rows) {
+
+            $number = $r[0] - 1;  // 投稿を消した分番号をずらす
+
+          // 投稿が削除されていないとき（存在しない投稿番号を指定したとき）
+          } else {
+            $number = $r[0];
+          }
+
+        // 投稿番号が削除番号のとき
         } else {
-          continue;
+
+          echo "投稿を削除しました。<br><br>";
+          continue;  // 投稿をコピーせずにスキップ
+
         }
-        
-        $f_post = "$number<>{$r[1]}<>{$r[2]}<>{$r[3]}";  // 投稿内容
+          
+        $f_post = "$number<>{$r[1]}<>{$r[2]}<>{$r[3]}<>{$r[4]}<><br>";  // 投稿内容
         fwrite($handle, $f_post.PHP_EOL);
 
       }
 
       fclose($handle);
-      echo "投稿を削除しました。<br>";
+
+
+    // エラー処理
 
     } else {
-
       echo "名前とコメント、または投稿番号を入力してください。<br>",
            "なお、投稿と削除は同時に行えません。<br>";
-
     }
 
 
@@ -83,14 +111,11 @@
     foreach ($f as $row) {
 
       $r = explode("<>", $row);  // 投稿内容を分割して取得
-      
-      foreach ($r as $print) {
-        echo $print, "-";  // 投稿内容を出力
-      }
+      echo "{$r[0]}: {$r[1]} [ {$r[2]} ] ({$r[3]})<br><br>";
 
-      echo "<br>";  // 1つの投稿内容ごとに改行
     }
   
   ?>
+
 </body>
 </html>
