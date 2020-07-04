@@ -13,11 +13,10 @@
 
   $sql = "SELECT * FROM tbtest";
   $stmt = $pdo -> query($sql);
-  $stmt -> execute();
   $results = $stmt -> fetchAll();
 
   foreach ($results as $result) {
-    echo "{$result['id']}, {$result['name']}, {$result['comment']}<br>";
+    echo "{$result['id']}, {$result['name']}, {$result['comment']}, {$result['password']}, {$result['date']}<br>";
   }
 
 

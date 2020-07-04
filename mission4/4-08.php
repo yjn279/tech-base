@@ -12,7 +12,7 @@
   // 投稿削除
 
   $id = 2;
-  $sql = 'DELETE FROM tbtest WHERE id=:id';
+  $sql = 'DELETE FROM mission5 WHERE id=:id';
 
   $stmt = $pdo -> prepare($sql);
   $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
