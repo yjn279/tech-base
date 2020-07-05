@@ -26,21 +26,50 @@
       // 変数宣言
 
       $type_value = $_POST['type'];  // 投稿タイプを取得
-      $number_value = $_POST['number'];
       $id = $_POST['id'];  // 投稿番号を取得
       $name = $_POST['name'];  // 氏名を取得
       $comment = $_POST['comment'];  // コメントを取得
       $password = $_POST['password'];  // パスワードを取得
 
       $date = date('Y/m/d H:i:s');  // 現在の日時を取得
+      $error = NULL;  // エラーメッセージ
 
 
       // 投稿フォーム
 
       if (isset($_POST['form_1'])) {
 
+        // 修正
+        if ($type_value == 'edit') {
+
+          $sql = 'UPDATE mission5 SET comment=:comment WHERE id=:id AND password=:password';
+          $stmt = $pdo -> prepare($sql);
+          $stmt -> bindParam(':comment', $comment, PDO::PARAM_STR);
+          $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
+          $stmt -> bindParam(':password', $password, PDO::PARAM_STR);
+          $stmt -> execute();
+
+        }
+        
+        // 削除
+        elseif ($type_value == 'delete') {
+
+            $sql = 'DELETE FROM mission5 WHERE id=:id AND password=:password';
+            $stmt = $pdo -> prepare($sql);
+            $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt -> bindParam(':password', $password, PDO::PARAM_STR);
+            $stmt -> execute();
+
+            // idを振り直すため、 カラムを再設定
+            $sql = 'ALTER TABLE mission5 DROP COLUMN id;
+                    ALTER TABLE mission5 ADD id INT AUTO_INCREMENT PRIMARY KEY FIRST;
+                    ALTER TABLE mission5 AUTO_INCREMENT = 1;';
+            $stmt = $pdo -> query($sql);
+            
+        }
+
         // 投稿
-        if ($type_value == 'post') {
+        else {
 
           $sql = 'INSERT INTO mission5 (name, comment, password, date) VALUES (:name, :comment, :password, :date)';
           $stmt = $pdo -> prepare($sql);
@@ -51,32 +80,9 @@
           $stmt -> execute();
 
         }
-        
-        // 修正
-        elseif ($type_value == 'edit') {
-            echo 'syusei';
-            $sql = 'UPDATE mission5 SET comment=:comment WHERE id=:id AND password=:password';
-            $stmt = $pdo -> prepare($sql);
-            $stmt -> bindParam(':comment', $comment, PDO::PARAM_STR);
-            $stmt -> bindParam(':id', $number_value, PDO::PARAM_INT);
-            $stmt -> bindParam(':password', $password, PDO::PARAM_STR);
-            $stmt -> execute();
-            
-        }
-
-        // 削除
-        else {
-          echo 'sakujo';
-          $sql = 'DELETE FROM mission5 WHERE id=:id AND password=:password';
-          $stmt = $pdo -> prepare($sql);
-          $stmt -> bindParam(':id', $number_value, PDO::PARAM_INT);
-          $stmt -> bindParam(':password', $password, PDO::PARAM_STR);
-          $stmt -> execute();
-
-        }
 
         $id_value = NULL;  // 投稿フォーム用のIDを取得
-        $type_value = 'post';  // 投稿タイプ
+        $type_value = NULL;  // 投稿タイプ
         $name_value = NULL;  // 投稿氏名
         $comment_value = NULL;  // 投稿コメント
         
@@ -92,7 +98,7 @@
         $results = $stmt -> fetchAll();
 
         // 削除する投稿が存在するとき
-        if (/*$id <= count($results)*/1) {
+        if ($id <= count($results)) {
           foreach ($results as $result) {
             if ($id == $result['id']) {
   
@@ -107,9 +113,8 @@
         }
 
         // 削除する投稿が存在しないとき
-        else {
-          // エラー処理
-        }
+        else $error = '投稿番号が存在しません';
+
       }
 
 
@@ -122,7 +127,7 @@
         $results = $stmt -> fetchAll();
 
         // 削除する投稿が存在するとき
-        if (/*$id <= count($results)*/1) {
+        if ($id <= count($results)) {
           foreach ($results as $result) {
             if ($id == $result['id']) {
   
@@ -137,20 +142,26 @@
         }
 
         // 削除する投稿が存在しないとき
-        else {
-          // エラー処理
-        }
+        else $error = '投稿番号が存在しません';
+
       }
     ?>
 
 
     <!-- 投稿フォーム -->
-    <h3>投稿はこちら</h3>
+
+    <h3>
+      <?php
+        if (empty($type_value)) echo '投稿はこちら';
+        else echo 'パスワードを入力してください';
+      ?>
+    </h3>
+
     <form action="" method="POST">
-      <input type="hidden" name="type" <?php echo "value='$type_value'"; ?>>
-      <input type="hidden" name="id" <?php echo "value='$id_value'"; ?>>
-      <input type="text" name="name" placeholder="氏名を入力" <?php echo "value='$name_value'"; ?> required>  <!-- セミコロン -->
-      <input type="text" name="comment" placeholder="コメントを入力" <?php echo "value='$comment_value'"; ?>required>
+      <input type="hidden" name="type" value="<?= $type_value ?>">
+      <input type="hidden" name="id" value="<?= $id_value ?>">
+      <input type="text" name="name" placeholder="氏名を入力" value="<?= $name_value ?>" required>
+      <input type="text" name="comment" placeholder="コメントを入力" value="<?= $comment_value ?>" required>
       <input type="password" name="password" placeholder="パスワードを設定" required>
       <input type="submit" name="form_1" value="投稿">
     </form>
@@ -169,8 +180,12 @@
       <input type="submit" name="form_3" value="削除">
     </form>
     <br>
+    <!-- エラーメッセージ -->
+    <p><?= $error ?></p>
     <!-- 投稿一覧 -->
     <h3>投稿一覧</h3>
+    <p>投稿番号: 氏名 [ 投稿内容 ] (投稿日時)</p>
+
 
     <?php
     
@@ -180,12 +195,8 @@
       $stmt = $pdo -> query($sql);
       $results = $stmt -> fetchAll();
 
-      echo '投稿番号: 氏名 [ 投稿内容 ] (パスワード) (投稿日時)<br>';
-
       foreach ($results as $result) {
-
-        echo "{$result['id']}: {$result['name']} [ {$result['comment']} ] ({$result['password']}) ({$result['date']})<br>";
-        
+        echo "{$result['id']}: {$result['name']} [ {$result['comment']} ] ({$result['date']})<br>";
       }
     ?>
   </body>
