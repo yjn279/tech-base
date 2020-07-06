@@ -27,9 +27,11 @@
 
       $type_value = $_POST['type'];  // 投稿タイプを取得
       $id = $_POST['id'];  // 投稿番号を取得
-      $name = $_POST['name'];  // 氏名を取得
-      $comment = $_POST['comment'];  // コメントを取得
+      $name = htmlspecialchars($_POST['name'], ENT_QUOTES|ENT_HTML5, 'UTF-8');  // 氏名を取得
+      $comment = htmlspecialchars($_POST['comment'], ENT_QUOTES|ENT_HTML5, 'UTF-8');  // コメントを取得
       $password = $_POST['password'];  // パスワードを取得
+
+      
 
       $date = date('Y/m/d H:i:s');  // 現在の日時を取得
       $error = NULL;  // エラーメッセージ
