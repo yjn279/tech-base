@@ -10,32 +10,42 @@
   $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 
 
+  // テーブルの削除
+
+  $tables = ['users', 'plans', 'calendars'];
+
+  foreach ($tables as $table) {
+    $sql ="DROP TABLE $table";
+    $result = $pdo -> query($sql);
+  }
+
+
   // テーブル作成
 
   $tables = [
 
     'users (
-      users_id INT ZEROFILL AUTOINCREMENT PRIMARY KEY,
+      users_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       name CHAR(32),
       mail CHAR(255),
       password CHAR(255)
     )',
 
     'plans (
-      plans_id INT ZEROFILL AUTO_INCREMENT PRIMARY KEY,
+      plans_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       title CHAR(64),
       schedule TEXT,
-      image ?,
+      image MEDIUMBLOB,
       comment TEXT,
       created_at DATETIME ON UPDATE CURRENT_TIMESTAMP,
-      users_id INT ZEROFILL,
+      users_id INT UNSIGNED,
       original TINYINT(1)
     )',
 
     'calendars (
-      calendars_id INT ZEROFILL AUTO_INCREMENT PRIMARY KEY,
-      users_id INT ZEROFILL,
-      plans_id INT ZEROFILL,
+      calendars_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      users_id INT UNSIGNED,
+      plans_id INT UNSIGNED,
       date DATE
     )'
 
@@ -49,11 +59,11 @@
 
   // テーブルを表示
 
-  $sql = 'SHOW CREATE TABLE users';  // すべて見れる？
+  $sql = 'SHOW TABLES';
   $result = $pdo -> query($sql);
   
 	foreach ($result as $row){
-		echo $row[1], '<br>';
+		echo $row[0], '<br>';
   }
 
 

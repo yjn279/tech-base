@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang ="ja">
+    <head>
+        <meta charset ="UTF-8">
+        <title>mission_3-3</title>
+    </head>
+    <body>
+        <form method ="POST" action="">
+        <input type  ="text" name ="text" placeholder ="名前">
+        <input type ="comment" name ="comment" placeholder ="コメント">
+        <input type ="submit" name ="submit"><br>
+        <form method ="POST" action ="">
+        <input type = "number" name ="NO" placeholder ="削除対象番号">
+        <input type ="submit" name="delete" value ="削除">
+        </form>
+       
+            <?php
+            $filename ="mission_3-3.txt";
+            $text =$_POST["text"];
+            $comment =$_POST["comment"];
+            $date =date(Y年m月d日　H時i分s秒);
+            $NO =$_POST["NO"];
+            
+            if(file_exists($filename)){
+                $num = count(file($filename))+1 ;
+            }else{
+                $num =1;
+            }
+            
+            $str = $num ."<>". $text . "<>". $comment. "<>". $date .PHP_EOL;
+            if(!empty($_POST["text"]) && ($_POST["comment"])){
+            $fp1 =fopen($filename,"a");
+            fwrite($fp1,$str);
+            
+            $filename ="mission_3-3.txt";
+            $array =file($filename,FILE_IGNORE_NEW_LINES);
+            foreach($array as $items){
+                $item =explode("<>",$items);
+                echo $item[0]."<br>";
+                echo $item[1]."<br>";
+                echo $item[2]."<br>";
+                echo $item[3]."<br>";
+
+            }   
+            }
+            
+            if($NO!=""){
+                $lines =file($filename);
+                $fp2 =fopen($filename,"w");
+                fwrite($fp2,"");
+                fclose($fp2);
+                 foreach($lines as $line){
+                     $item =explode("<>",$items);
+                     $suuji =$item[0];
+                     if($suuji!= $NO){
+                         fwrite($fp1,$lines[$suuji -1]);
+                     }
+                 }
+            
+            fclose($fp1);
+           
+            
+            }
+            
+            
+            
+            ?>
+    </body>
+</html>
