@@ -45,25 +45,40 @@
             }
             
             if($NO!=""){
-                $lines =file($filename);
-                $fp2 =fopen($filename,"w");
-                fwrite($fp2,"");
-                fclose($fp2);
+
+                $lines = file($filename);
+                $fp1 = fopen($filename, "w");  // $fp2 -> $fp1  ↓に合わせました！
+                // fwrite($fp2,""); 
+                // fclose($fp2);  $fp1だけで大丈夫です！
+
                  foreach($lines as $line){
-                     $item =explode("<>",$items);
+
+                     $item =explode("<>",$line);  // $items -> $line
                      $suuji =$item[0];
+
                      if($suuji!= $NO){
-                         fwrite($fp1,$lines[$suuji -1]);
+                         fwrite($fp1,$line);  // $lines -> $line
                      }
                  }
             
-            fclose($fp1);
-           
-            
+                fclose($fp1);
+
+
+                // ファイルから出力
+
+                $array = file($filename, FILE_IGNORE_NEW_LINES);
+
+                foreach($array as $items){
+
+                    $item = explode("<>", $items);
+                    echo $item[0]."<br>";
+                    echo $item[1]."<br>";
+                    echo $item[2]."<br>";
+                    echo $item[3]."<br>";
+
+                } 
             }
-            
-            
-            
+
             ?>
     </body>
 </html>
