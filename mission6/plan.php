@@ -11,16 +11,15 @@
     <main>
       <img src="" alt="">
       <div id="details">
-        <div>Shedule</div>
+        <pre>Shedule</pre>
         <pre>Comment</pre>
-        <?php if(0/* user == NULL */): ?>
+        <?php if(empty($_SESSION['user'])): ?>
           <p class="button">Login</p>
           <p class="button">Signup</p>
-        <?php endif ?>
-        <?php if(1/* user != NULL */): ?>
+        <?php else: ?>
           <p class="button">Add to calenddar</p>
           <!-- <p class="button">Add to lists</p> -->
-        <?php endif; ?> <!-- セミコロン必要？ -->
+        <?php endif ?>
 
       </div>
     </main>

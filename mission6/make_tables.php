@@ -22,7 +22,7 @@
 
   // テーブル作成
 
-  $tables = [
+  $tables = [  // mail -> email
 
     'users (
       users_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

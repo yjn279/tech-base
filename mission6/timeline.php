@@ -13,34 +13,25 @@
     <?php
 
 
-      // DB接続
+      // ライブラリの読み込み
+      include 'libraries/main.php';
 
-      $dsn = 'mysql:dbname=tb220145db;host=localhost';
-      $user = 'tb-220145';
-      $password = 'YXAzZ7AChH';
-
-      $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-
-
-      // セッションの開始
-
-      session_start();
 
       if (isset($_POST['signup'])) {
 
 
         // フォームデータの取得
 
-        $name = htmlspecialchars($_POST['name'], ENT_QUOTES|ENT_HTML5, 'UTF-8');
-        $mail = htmlspecialchars($_POST['mail'], ENT_QUOTES|ENT_HTML5, 'UTF-8');
-        $password = htmlspecialchars($_POST['password'], ENT_QUOTES|ENT_HTML5, 'UTF-8');
+        $name = escape($_POST['name']);
+        $email = escape($_POST['email']);
+        $password = escape($_POST['password']);
 
 
         // アカウントをDBへ登録
 
-        $stmt = $pdo -> prepare('INSERT INTO users (name, mail, password) VALUES(:name, :mail, :password)');
+        $stmt = $pdo -> prepare('INSERT INTO users (name, mail, password) VALUES(:name, :email, :password)');
         $stmt -> bindParam(':name', $name, PDO::PARAM_STR);
-        $stmt -> bindParam(':mail', $mail, PDO::PARAM_STR);
+        $stmt -> bindParam(':email', $email, PDO::PARAM_STR);
         $stmt -> bindParam(':password', $password, PDO::PARAM_STR);
         $stmt -> execute();  // 実行が失敗した場合のエラー処理
         // 既に登録されているアカウントに対するエラー処理
@@ -48,8 +39,8 @@
 
         // users_idの取得
 
-        $stmt = $pdo -> prepare('SELECT * FROM users WHERE mail = :mail');
-        $stmt -> bindParam(':mail', $mail, PDO::PARAM_STR);
+        $stmt = $pdo -> prepare('SELECT * FROM users WHERE mail = :email');
+        $stmt -> bindParam(':email', $email, PDO::PARAM_STR);
         $stmt -> execute();
         $result = $stmt -> fetch();
 
@@ -58,7 +49,7 @@
 
         $_SESSION['user'] = $result[0];
         $_SESSION['name'] = $result[1];
-        $_SESSION['mail'] = $result[2];
+        $_SESSION['email'] = $result[2];
         $_SESSION['password'] = $result[3];
 
         // エラー処理
@@ -71,14 +62,14 @@
 
         // フォームデータの取得
 
-        $mail = htmlspecialchars($_POST['mail'], ENT_QUOTES|ENT_HTML5, 'UTF-8');
-        $password = htmlspecialchars($_POST['password'], ENT_QUOTES|ENT_HTML5, 'UTF-8');
+        $email = escape($_POST['email']);
+        $password = escape($_POST['password']);
         
 
         // users_idの取得
 
-        $stmt = $pdo -> prepare('SELECT * FROM users WHERE mail=:mail AND password=:password');
-        $stmt -> bindParam(':mail', $mail, PDO::PARAM_STR);
+        $stmt = $pdo -> prepare('SELECT * FROM users WHERE mail=:email AND password=:password');
+        $stmt -> bindParam(':email', $email, PDO::PARAM_STR);
         $stmt -> bindParam(':password', $password, PDO::PARAM_STR);
         $stmt -> execute();
         $result = $stmt -> fetch();
@@ -90,13 +81,13 @@
 
           $_SESSION['user'] = $result[0];
           $_SESSION['name'] = $result[1];
-          $_SESSION['mail'] = $result[2];
+          $_SESSION['email'] = $result[2];
           $_SESSION['password'] = $result[3];
 
         } else {
 
           $_SESSION['error'] = 'メールアドレスまたはパスワードが正しくありません。';
-          header('Location: login.php?error=メールアドレスまたはパスワードが正しくありません。');
+          header('Location: login.php');
           exit;
 
         }
@@ -124,7 +115,7 @@
           <div id="side_calendar">Calendar</div>
           <a class="button" href="">Make new plan!</a>
           <!-- Lists 実装予定 -->
-        <?php endif; ?> <!-- セミコロン必要？ -->
+        <?php endif ?>
 
       </div>
     </main>
