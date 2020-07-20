@@ -9,12 +9,12 @@
     <header>
     </header>
 
-
     <?php
 
 
       // ライブラリの読み込み
       include 'libraries/main.php';
+      $pdo = connection_db();
 
 
       if (isset($_POST['signup'])) {
@@ -45,7 +45,7 @@
         $result = $stmt -> fetch();
 
 
-        // セッションの管理
+        // セッションの登録
 
         $_SESSION['user'] = $result[0];
         $_SESSION['name'] = $result[1];
@@ -96,7 +96,6 @@
 
       }
     ?>
-
 
     <main>
       <div id="main_column">

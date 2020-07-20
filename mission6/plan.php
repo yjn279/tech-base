@@ -8,6 +8,13 @@
   <body>
     <header>
     </header>
+
+    <?php
+    
+      // 
+    
+    ?>
+
     <main>
       <img src="" alt="">
       <div id="details">

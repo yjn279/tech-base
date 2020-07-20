@@ -15,8 +15,13 @@
         <input class="button" type="submit" name="login" value="Login">
       </form>
       
-      <?php include 'libraries/main.php' ?>
-      <?php echo_error() ?>
+      <?php
+        
+        include 'libraries/main.php';  // ライブラリの読み込み
+        redirect(empty($_SESSION['user']));  // リダイレクト
+        echo_error();  // エラー処理
+        
+      ?>
 
       <a class="button" href="signup.php">Signup</a>
     </main>
