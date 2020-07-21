@@ -22,8 +22,9 @@
 
   // テーブル作成
 
-  $tables = [  // mail -> email
+  $tables = [
 
+    // mail -> email
     'users (
       users_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       name CHAR(32),
@@ -31,6 +32,7 @@
       password CHAR(255)
     )',
 
+    // DATETIME -> DATE  imageの順番  original default
     'plans (
       plans_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       title CHAR(64),

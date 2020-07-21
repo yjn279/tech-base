@@ -12,10 +12,14 @@
     <?php
 
 
-      // ライブラリの読み込み
+      // インクルード
       include 'libraries/main.php';
+
+      // DB接続
       $pdo = connection_db();
 
+
+      // from signup
 
       if (isset($_POST['signup'])) {
 
@@ -37,25 +41,21 @@
         // 既に登録されているアカウントに対するエラー処理
 
 
-        // users_idの取得
-
-        $stmt = $pdo -> prepare('SELECT * FROM users WHERE mail = :email');
-        $stmt -> bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt -> execute();
-        $result = $stmt -> fetch();
-
-
         // セッションの登録
 
-        $_SESSION['user'] = $result[0];
-        $_SESSION['name'] = $result[1];
-        $_SESSION['email'] = $result[2];
-        $_SESSION['password'] = $result[3];
+        $_SESSION['user'] = (int) $pdo -> lastInsertId();
+        $_SESSION['name'] = $name;
+        $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;
+
 
         // エラー処理
 
 
       }
+
+
+      // from login
 
       elseif (isset($_POST['login'])) {
 
@@ -84,7 +84,13 @@
           $_SESSION['email'] = $result[2];
           $_SESSION['password'] = $result[3];
 
-        } else {
+
+        }
+        
+        
+        // from the other
+        
+        else {
 
           $_SESSION['error'] = 'メールアドレスまたはパスワードが正しくありません。';
           header('Location: login.php');

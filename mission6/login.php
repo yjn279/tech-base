@@ -17,7 +17,7 @@
       
       <?php
         
-        include 'libraries/main.php';  // ライブラリの読み込み
+        include 'libraries/main.php';  //インクルード
         redirect(empty($_SESSION['user']));  // リダイレクト
         echo_error();  // エラー処理
         
