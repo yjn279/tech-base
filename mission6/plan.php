@@ -30,18 +30,18 @@
 
         $title = escape($_POST['title']);
         $schedule = escape($_POST['schedule']);
-        $image = escape($_POST['image']);
         $comment = escape($_POST['comment']);
+        $image = escape($_POST['image']);
 
 
         // プランをDBへ登録  serialize?S
 
-        $stmt = $pdo -> prepare('INSERT INTO plans (title, schedule, image, comment, users_id, original) VALUES(:title, :schedule, :image, :comment, :users_id, 1)');
+        $stmt = $pdo -> prepare('INSERT INTO plans (title, schedule, comment, image, users_id, original) VALUES(:title, :schedule, :comment, :image, :user, 1)');
         $stmt -> bindParam(':title', $title, PDO::PARAM_STR);
         $stmt -> bindParam(':schedule', $schedule, PDO::PARAM_STR);
-        $stmt -> bindParam(':image', $image, PDO::PARAM_LOB);
         $stmt -> bindParam(':comment', $comment, PDO::PARAM_STR);
-        $stmt -> bindParam(':users_id', $user, PDO::PARAM_INT);
+        $stmt -> bindParam(':image', $image, PDO::PARAM_LOB);
+        $stmt -> bindParam(':user', $user, PDO::PARAM_INT);
         // クラス化するとき、PDO::PARAM_BOOLがある
         $stmt -> execute();  // 実行が失敗した場合のエラー処理
 
@@ -69,8 +69,8 @@
         <p><?= $date ?></p>
         <p><?= $name ?></p>
         <?php if(empty($user)): ?>
-          <p class="button">Login</p>
-          <p class="button">Signup</p>
+          <a class="button" href="login.php">Login</a>
+          <a class="button" href="signup.php">Signup</a>
         <?php else: ?>
           <a class="button" href="">Add to calenddar</a>
           <!-- <p class="button">Add to lists</p> -->

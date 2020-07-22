@@ -24,21 +24,19 @@
 
   $tables = [
 
-    // mail -> email
     'users (
       users_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       name CHAR(32),
-      mail CHAR(255),
+      email CHAR(255),
       password CHAR(255)
     )',
 
-    // imageの順番
     'plans (
       plans_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       title CHAR(64) NOT NULL,
       schedule TEXT NOT NULL,
-      image MEDIUMBLOB,
       comment TEXT,
+      image MEDIUMBLOB,
       created_at DATETIME ON UPDATE CURRENT_TIMESTAMP DEFAULT NOW(),
       users_id INT UNSIGNED NOT NULL,
       original TINYINT(1) DEFAULT 1

@@ -33,7 +33,7 @@
 
         // アカウントをDBへ登録
 
-        $stmt = $pdo -> prepare('INSERT INTO users (name, mail, password) VALUES(:name, :email, :password)');
+        $stmt = $pdo -> prepare('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
         $stmt -> bindParam(':name', $name, PDO::PARAM_STR);
         $stmt -> bindParam(':email', $email, PDO::PARAM_STR);
         $stmt -> bindParam(':password', $password, PDO::PARAM_STR);
@@ -68,7 +68,7 @@
 
         // users_idの取得
 
-        $stmt = $pdo -> prepare('SELECT * FROM users WHERE mail=:email AND password=:password');
+        $stmt = $pdo -> prepare('SELECT * FROM users WHERE email=:email AND password=:password');
         $stmt -> bindParam(':email', $email, PDO::PARAM_STR);
         $stmt -> bindParam(':password', $password, PDO::PARAM_STR);
         $stmt -> execute();
