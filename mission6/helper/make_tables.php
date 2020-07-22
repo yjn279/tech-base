@@ -32,16 +32,16 @@
       password CHAR(255)
     )',
 
-    // DATETIME -> DATE  imageの順番  original default
+    // imageの順番
     'plans (
       plans_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-      title CHAR(64),
-      schedule TEXT,
+      title CHAR(64) NOT NULL,
+      schedule TEXT NOT NULL,
       image MEDIUMBLOB,
       comment TEXT,
-      created_at DATETIME ON UPDATE CURRENT_TIMESTAMP,
-      users_id INT UNSIGNED,
-      original TINYINT(1)
+      created_at DATETIME ON UPDATE CURRENT_TIMESTAMP DEFAULT NOW(),
+      users_id INT UNSIGNED NOT NULL,
+      original TINYINT(1) DEFAULT 1
     )',
 
     'calendars (

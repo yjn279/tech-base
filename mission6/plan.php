@@ -18,6 +18,7 @@
 
       $pdo = connection_db();
       $user = $_SESSION['user'];
+      $name = $_SESSION['name'];
 
 
       // from make_plan
@@ -53,11 +54,7 @@
         $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
         $stmt -> execute();
         $date = $stmt -> fetch();
-
-        $origin = 1;
-
-        echo $date[0];
-        echo (string) $data[1];
+        $date = $date['created_at'];
 
 
       }
@@ -69,14 +66,13 @@
         <h3><?= $title ?></h3>
         <pre><?= $schedule ?></pre>
         <pre><?= $comment ?></pre>
-        <p><?= $date[0] ?></p>
-        <p><?= $user ?></p>
-        <p><?= $origin ?></p>
+        <p><?= $date ?></p>
+        <p><?= $name ?></p>
         <?php if(empty($user)): ?>
           <p class="button">Login</p>
           <p class="button">Signup</p>
         <?php else: ?>
-          <p class="button">Add to calenddar</p>
+          <a class="button" href="">Add to calenddar</a>
           <!-- <p class="button">Add to lists</p> -->
         <?php endif ?>
 

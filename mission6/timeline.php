@@ -118,7 +118,7 @@
           <a class="button" href="signup.php">Signup</a>
         <<?php else: ?>
           <div id="side_calendar">Calendar</div>
-          <a class="button" href="">Make new plan!</a>
+          <a class="button" href="make_plan.php">Make new plan!</a>
           <!-- Lists 実装予定 -->
         <?php endif ?>
 
