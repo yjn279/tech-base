@@ -85,12 +85,7 @@
           $_SESSION['password'] = $result[3];
 
 
-        }
-        
-        
-        // from the other
-        
-        else {
+        } else {
 
           $_SESSION['error'] = 'メールアドレスまたはパスワードが正しくありません。';
           header('Location: login.php');

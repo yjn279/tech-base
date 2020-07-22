@@ -34,7 +34,7 @@
         $image = escape($_POST['image']);
 
 
-        // プランをDBへ登録  serialize?S
+        // プランをDBへ登録
 
         $stmt = $pdo -> prepare('INSERT INTO plans (title, schedule, comment, image, users_id, original) VALUES(:title, :schedule, :comment, :image, :user, 1)');
         $stmt -> bindParam(':title', $title, PDO::PARAM_STR);
