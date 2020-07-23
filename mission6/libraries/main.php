@@ -1,23 +1,10 @@
 <?php
 
 
-  // DB接続
+  // インクルード  
 
-  function connection_db() {
-
-    $dsn = 'mysql:dbname=tb220145db;host=localhost';
-    $user = 'tb-220145';
-    $password = 'YXAzZ7AChH';
-
-    return new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-
-  }
-
-
-  // エスケープ処理
-  function escape(string $string) {
-    return htmlspecialchars($string, ENT_QUOTES|ENT_HTML5, 'UTF-8');
-  }
+  include 'users.php';
+  include 'plans.php';
 
 
   // セッション管理
@@ -28,6 +15,7 @@
       header("Location: $location");
       exit;
     }
+    
   }
 
 
@@ -41,10 +29,4 @@
 
     }
   }
-
-
-  // 自動実行
-  session_start();
-
-  
 ?>
