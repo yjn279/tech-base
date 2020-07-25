@@ -9,8 +9,6 @@
     
     function __construct() {
 
-      // session_start();
-
       $dsn = 'mysql:dbname=tb220145db;host=localhost';
       $user = 'tb-220145';
       $password = 'YXAzZ7AChH';
@@ -22,7 +20,7 @@
 
     // エスケープ処理
 
-    function escape(string $string) {
+    function escape(string $string=NULL) {
       return htmlspecialchars($string, ENT_QUOTES|ENT_HTML5, 'UTF-8');
     }
 

@@ -3,6 +3,7 @@
 
   // インクルード  
 
+  include 'database.php';
   include 'users.php';
   include 'plans.php';
 
@@ -29,4 +30,10 @@
 
     }
   }
+  
+
+  // 自動実行
+  session_start();
+
+
 ?>

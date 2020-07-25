@@ -13,10 +13,14 @@
 
 
       // インクルード
-      include 'libraries/main.php';
 
-      // DB接続
-      $pdo = connection_db();
+      include 'libraries/main.php';
+      $users = new Users();
+      $plans_inst = new Plans();
+
+
+      // セッション管理
+      $_SESSION['from'] = 'timeline';
 
 
       // from signup
@@ -26,24 +30,18 @@
 
         // フォームデータの取得
 
-        $name = escape($_POST['name']);
-        $email = escape($_POST['email']);
-        $password = escape($_POST['password']);
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
 
-        // アカウントをDBへ登録
-
-        $stmt = $pdo -> prepare('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
-        $stmt -> bindParam(':name', $name, PDO::PARAM_STR);
-        $stmt -> bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt -> bindParam(':password', $password, PDO::PARAM_STR);
-        $stmt -> execute();  // 実行が失敗した場合のエラー処理
-        // 既に登録されているアカウントに対するエラー処理
+        // アカウントの登録
+        $user = $users -> signup($name, $email, $password);
 
 
         // セッションの登録
 
-        $_SESSION['user'] = (int) $pdo -> lastInsertId();
+        $_SESSION['user'] = $user;
         $_SESSION['name'] = $name;
         $_SESSION['email'] = $email;
         $_SESSION['password'] = $password;
@@ -62,28 +60,22 @@
 
         // フォームデータの取得
 
-        $email = escape($_POST['email']);
-        $password = escape($_POST['password']);
+        $email = $_POST['email'];
+        $password = $_POST['password'];
         
 
-        // users_idの取得
-
-        $stmt = $pdo -> prepare('SELECT * FROM users WHERE email=:email AND password=:password');
-        $stmt -> bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt -> bindParam(':password', $password, PDO::PARAM_STR);
-        $stmt -> execute();
-        $result = $stmt -> fetch();
-
+        // アカウントの認証
+        list($user, $name) = $users -> login($email, $password);
+        
 
         // セッションの管理
 
-        if (isset($result[0])) {
+        if (isset($user)) {
 
-          $_SESSION['user'] = $result[0];
-          $_SESSION['name'] = $result[1];
-          $_SESSION['email'] = $result[2];
-          $_SESSION['password'] = $result[3];
-
+          $_SESSION['user'] = $user;
+          $_SESSION['name'] = $name;
+          $_SESSION['email'] = $email;
+          $_SESSION['password'] = $password;
 
         } else {
 
@@ -100,18 +92,28 @@
 
     <main>
       <div id="main_column">
-        <?php //foreach ($plans as $plan): ?>
-          <!-- <a class="plan" href=""> -->
-            <?php //?= $plan ?>
-          <!-- </a> -->
-        <?php //endforeach; ?>
+
+
+        <?php $plans = $plans_inst -> get_plans() ?>
+
+         <?php foreach ($plans as $plan): ?>
+          <a id="plan" href="plan.php?id=<?= $plan['plans_id'] ?>">
+            <img src="" alt="">
+            <div>
+              <h3><?= $plan['title'] ?></h3>
+              <pre><?= $plan['schedule'] ?></pre>
+            </div>
+          </a>
+        <?php endforeach ?>
+
+
       </div>
       <div id="side_column">
 
         <?php if(empty($_SESSION['user'])): ?>
           <a class="button" href="login.php">Login</a>
           <a class="button" href="signup.php">Signup</a>
-        <<?php else: ?>
+        <?php else: ?>
           <div id="side_calendar">Calendar</div>
           <a class="button" href="make_plan.php">Make new plan!</a>
           <!-- Lists 実装予定 -->

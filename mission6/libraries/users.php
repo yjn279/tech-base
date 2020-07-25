@@ -1,9 +1,6 @@
 <?php
 
 
-  include 'database.php';
-
-
   class Users extends DataBase {
 
 
@@ -30,13 +27,25 @@
       $email = $this->escape($email);
       $password = $this->escape($password);
       
-      $stmt = $this->pdo -> prepare('SELECT users_id FROM users WHERE email=:email AND password=:password');
+      $stmt = $this->pdo -> prepare('SELECT * FROM users WHERE email=:email AND password=:password');
       $stmt -> bindParam(':email', $email);
       $stmt -> bindParam(':password', $password);
       $stmt -> execute();
-      $id = $stmt -> fetch();
+      $result = $stmt -> fetch();
     
-      return isset($id) ? $id['users_id'] : -1;
+      return array((int) $result['users_id'], $result['name']);
+    
+    }
+
+
+    function get_user(int $id) {
+
+      $stmt = $this->pdo -> prepare('SELECT name FROM users WHERE users_id=:id');
+      $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
+      $stmt -> execute();
+      $result = $stmt -> fetch();
+    
+      return $result['name'];
     
     }
   }

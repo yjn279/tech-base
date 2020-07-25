@@ -119,29 +119,22 @@
     } elseif ($form_3 != NULL) {
       
       if ($number < $count) {  // 投稿が存在する場合
-
         $handle = fopen($f_name, "w");
 
         foreach ($f as $row) {
-
           $r = explode("<>", $row);  // 投稿内容を分割して取得
 
           if ($r[0] < $number) {
-
             $count = $r[0];
 
           } elseif ($r[0] > $number) {
-
             $rows = count(file($f_name, FILE_IGNORE_NEW_LINES)) + 1;
 
             if ($r[0] > $rows) {  // 投稿が削除された場合
-
               $count = $r[0] - 1;  // 投稿を消した分番号をずらす
 
             } else {
-
               $count = $r[0];
-
             }
 
           } else {

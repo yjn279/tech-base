@@ -15,8 +15,9 @@
       // インクルード
 
       include 'libraries/main.php';
+      $users = new Users();
+      $plans = new Plans();
 
-      $pdo = connection_db();
       $user = $_SESSION['user'];
       $name = $_SESSION['name'];
 
@@ -28,34 +29,33 @@
         
         // データの取得
 
-        $title = escape($_POST['title']);
-        $schedule = escape($_POST['schedule']);
-        $comment = escape($_POST['comment']);
-        $image = escape($_POST['image']);
+        $title = $_POST['title'];
+        $schedule = $_POST['schedule'];
+        $comment = $_POST['comment'];
+        $image = NULL;  // $_POST['image'];
 
 
-        // プランをDBへ登録
-
-        $stmt = $pdo -> prepare('INSERT INTO plans (title, schedule, comment, image, users_id, original) VALUES(:title, :schedule, :comment, :image, :user, 1)');
-        $stmt -> bindParam(':title', $title, PDO::PARAM_STR);
-        $stmt -> bindParam(':schedule', $schedule, PDO::PARAM_STR);
-        $stmt -> bindParam(':comment', $comment, PDO::PARAM_STR);
-        $stmt -> bindParam(':image', $image, PDO::PARAM_LOB);
-        $stmt -> bindParam(':user', $user, PDO::PARAM_INT);
-        // クラス化するとき、PDO::PARAM_BOOLがある
-        $stmt -> execute();  // 実行が失敗した場合のエラー処理
+        // プランの登録・取得
+        $id = $plans -> make_plan($user, $title, $schedule, $comment, $image);
+        $plan = $plans -> get_plans('plans_id', $id, 'created_at');
+        $date = $plan[0]['created_at'];
 
 
-        // プランデータを追加
+      }
 
-        $id = (int) $pdo -> lastInsertId();
 
-        $stmt = $pdo -> prepare('SELECT created_at FROM plans WHERE plans_id = :id');
-        $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt -> execute();
-        $date = $stmt -> fetch();
-        $date = $date['created_at'];
+      // form timeline
 
+      elseif($_SESSION['from'] == 'timeline') {
+
+        $id = $_GET['id'];
+        $plan = $plans -> get_plans('plans_id', $id);
+        $title = $plan[0]['title'];
+        $schedule = $plan[0]['schedule'];
+        $comment = $plan[0]['comment'];
+        $date = $plan[0]['created_at'];
+        $name = $plan[0]['users_id'];
+        $name = $users -> get_user($name);
 
       }
     ?>
@@ -68,6 +68,7 @@
         <pre><?= $comment ?></pre>
         <p><?= $date ?></p>
         <p><?= $name ?></p>
+
         <?php if(empty($user)): ?>
           <a class="button" href="login.php">Login</a>
           <a class="button" href="signup.php">Signup</a>

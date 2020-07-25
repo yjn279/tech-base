@@ -1,14 +1,12 @@
 <?php
 
 
-  include 'database.php';
-
-
   class Plans extends DataBase {
 
     
-    function make_plan(int $user, string $title, string $schedule, string $comment, lob $image=NULL) {
+    function make_plan(string $user, string $title, string $schedule, string $comment=NULL, lob $image=NULL) {
 
+      $user = (int) $this->escape($user);
       $title = $this->escape($title);
       $schedule = $this->escape($schedule);
       $comment = $this->escape($comment);
@@ -27,21 +25,18 @@
     }
     
     
-    function get_plans(string $column=NULL, $condition=NULL) {
+    function get_plans(string $where=NULL, $condition=NULL, string $select='*') {
     
-      if (isset($column) && isset($condition)) {
+      if (isset($where) && isset($condition)) {
     
-        $stmt = $this->pdo -> prepare("SELECT * FROM plans WHERE $column = :condition");
-        // $stmt -> bindParam(':column', $column);
+        $stmt = $this->pdo -> prepare("SELECT $select FROM plans WHERE $where = :condition");
+        // $stmt -> bindParam(':where', $where);
         $stmt -> bindParam(':condition', $condition);
         $stmt -> execute();
         // エラー処理
     
-      } elseif (empty($column) && empty($condition)) {
-        $stmt = $this->pdo -> query('SELECT * FROM plans');
-    
       } else {
-        return -1;
+        $stmt = $this->pdo -> query("SELECT $select FROM plans");
       }
     
       return $stmt -> fetchAll();
