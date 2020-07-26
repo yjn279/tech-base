@@ -17,15 +17,12 @@
       include 'libraries/main.php';
       $users = new Users();
       $plans_inst = new Plans();
-
-
-      // セッション管理
-      $_SESSION['from'] = 'timeline';
+      $from = from();
 
 
       // from signup
 
-      if (isset($_POST['signup'])) {
+      if ($from == 'signup') {
 
 
         // フォームデータの取得
@@ -55,7 +52,7 @@
 
       // from login
 
-      elseif (isset($_POST['login'])) {
+      elseif ($from == 'login') {
 
 
         // フォームデータの取得

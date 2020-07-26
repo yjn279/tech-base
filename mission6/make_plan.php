@@ -9,8 +9,13 @@
     <header>
     </header>
 
-    <?php include 'libraries/main.php'  // インクルード ?>
-    <?php redirect(empty($_SESSION['user']))  // リダイレクト ?>
+    <?php
+
+      include 'libraries/main.php'  // インクルード
+      redirect(empty($_SESSION['user']))  // リダイレクト
+      from()  // ページ管理
+
+    ?>
 
     <main>
       <form action="plan.php" method="POST">
@@ -21,7 +26,7 @@
           <div>
           <p>画像を入力してください。</p>
           <input type="file" name="image">
-          <input class="button" type="submit" name="make_plan" value="Add to calendar">
+          <input class="button" type="submit" value="Add to calendar">
           </div>
         </div>
       </form>
@@ -30,4 +35,3 @@
     </footer>
   </body>
 </html>
-<!-- アクセス制限を導入 -->

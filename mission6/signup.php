@@ -13,13 +13,14 @@
         <input type="text" name="name" placeholder="name" required>
         <input type="email" name="email" placeholder="e-mail" required>
         <input type="password" name="password" placeholder="password" required>
-        <input class="button" type="submit" name="signup" value="Signup">
+        <input class="button" type="submit" value="Signup">
       </form>
 
       <?php
         
         include 'libraries/main.php';  // インクルード
         redirect(isset($_SESSION['user']), 'timeline.php');  // リダイレクト
+        from()''
         echo_error();  // エラー処理
         
       ?>

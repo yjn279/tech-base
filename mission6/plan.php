@@ -20,11 +20,12 @@
 
       $user = $_SESSION['user'];
       $name = $_SESSION['name'];
+      $from = from();
 
 
       // from make_plan
 
-      if (isset($_POST['make_plan'])) {
+      if ($from == 'make_plan') {
 
         
         // データの取得
@@ -46,7 +47,7 @@
 
       // form timeline
 
-      elseif($_SESSION['from'] == 'timeline') {
+      elseif($from == 'timeline') {
 
         $id = $_GET['id'];
         $plan = $plans -> get_plans('plans_id', $id);
