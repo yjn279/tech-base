@@ -34,8 +34,7 @@
         $schedule = $_POST['schedule'];
         $comment = $_POST['comment'];
         $image = NULL;  // $_POST['image'];
-        $name_id = $_SESSION['user']
-        $name = $_SESSION['name']
+        $name_id = $_SESSION['user'];
 
 
         // プランの登録・取得
@@ -48,8 +47,8 @@
 
 
       // from timeline
-
-      elseif($from == 'timeline' && isset($GET['id'])) {
+      
+      elseif($from == 'timeline' && isset($_GET['id'])) {
 
         $id = $_GET['id'];
         $plan = $plans -> get_plans('plans_id', $id);
@@ -106,10 +105,10 @@
           <a class="button" href="login.php">Login</a>
           <a class="button" href="signup.php">Signup</a>
         <?php else: ?>
-          <a class="button" href="">Add to calenddar</a>
-          <a class="button" href="edit?id=<?= $id ?>">Edit</a>
+          <a class="button" href="">Add to calendar</a>
+          <a class="button" href="edit.php?id=<?= $id ?>">Edit</a>
 
-          <?php if($name_id == $_SESSION['user']) ?>
+          <?php if($name_id == $user): ?>
             <a class="button" href="delete.php?id=<?= $id ?>">Delete</a>
           <?php endif ?>
 

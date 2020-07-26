@@ -15,12 +15,13 @@
       //インクルード
       
       include 'libraries/main.php';
+      $users = new Users();
       $plans = new Plans();
       $from = from();
 
 
       // リダイレクト
-      redirect(empty($_SESSION['user']));
+      // redirect(empty($_SESSION['user']));
 
 
       // edit

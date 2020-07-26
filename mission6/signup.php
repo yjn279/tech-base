@@ -19,7 +19,7 @@
       <?php
         
         include 'libraries/main.php';  // インクルード
-        redirect(isset($_SESSION['user']), 'timeline.php');  // リダイレクト
+        // redirect(isset($_SESSION['user']), 'timeline.php');  // リダイレクト
         from();
         echo_error();  // エラー処理
         
