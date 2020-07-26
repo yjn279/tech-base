@@ -25,7 +25,7 @@
 
       // from make_plan
 
-      if ($from == 'make_plan') {
+      if ($from == 'make_plan' && isset($_POST['title'])) {
 
         
         // データの取得
@@ -34,10 +34,12 @@
         $schedule = $_POST['schedule'];
         $comment = $_POST['comment'];
         $image = NULL;  // $_POST['image'];
+        $name_id = $_SESSION['user']
+        $name = $_SESSION['name']
 
 
         // プランの登録・取得
-        $id = $plans -> make_plan($user, $title, $schedule, $comment, $image);
+        $id = $plans -> make_plan($user, TRUE, $title, $schedule, $comment, $image);
         $plan = $plans -> get_plans('plans_id', $id, 'created_at');
         $date = $plan[0]['created_at'];
 
@@ -45,19 +47,48 @@
       }
 
 
-      // form timeline
+      // from timeline
 
-      elseif($from == 'timeline') {
+      elseif($from == 'timeline' && isset($GET['id'])) {
 
         $id = $_GET['id'];
         $plan = $plans -> get_plans('plans_id', $id);
         $title = $plan[0]['title'];
         $schedule = $plan[0]['schedule'];
         $comment = $plan[0]['comment'];
+        $image = $plan[0]['image'];
         $date = $plan[0]['created_at'];
-        $name = $plan[0]['users_id'];
-        $name = $users -> get_user($name);
+        $name_id = $plan[0]['users_id'];
+        $name = $users -> get_user($name_id);
 
+      }
+
+
+      // form edit
+
+      elseif($_GET['from'] == 'edit') {
+
+        $id = $_GET['id'];
+        $title = $_POST['title'];
+        $schedule = $_POST['schedule'];
+        $comment = $_POST['comment'];
+        $image = NULL;  // $_POST['image'];
+        $name = $_SESSION['user'];
+
+        if ($_GET['original']) {
+
+          $plans -> edit_plan($id, $title, $schedule, $comment, $image);
+          $plan = $plans -> get_plans('plans_id', $id, 'created_at');
+          $date = $plan[0]['created_at'];
+
+        } else {
+          
+          // プランの登録・取得
+          $id = $plans -> make_plan($user, FALSE, $title, $schedule, $comment, $image);
+          $plan = $plans -> get_plans('plans_id', $id, 'created_at');
+          $date = $plan[0]['created_at'];
+
+        }
       }
     ?>
 
@@ -70,13 +101,21 @@
         <p><?= $date ?></p>
         <p><?= $name ?></p>
 
+
         <?php if(empty($user)): ?>
           <a class="button" href="login.php">Login</a>
           <a class="button" href="signup.php">Signup</a>
         <?php else: ?>
           <a class="button" href="">Add to calenddar</a>
+          <a class="button" href="edit?id=<?= $id ?>">Edit</a>
+
+          <?php if($name_id == $_SESSION['user']) ?>
+            <a class="button" href="delete.php?id=<?= $id ?>">Delete</a>
+          <?php endif ?>
+
           <!-- <p class="button">Add to lists</p> -->
         <?php endif ?>
+
 
       </div>
     </main>

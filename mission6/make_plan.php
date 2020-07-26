@@ -11,9 +11,9 @@
 
     <?php
 
-      include 'libraries/main.php'  // インクルード
-      redirect(empty($_SESSION['user']))  // リダイレクト
-      from()  // ページ管理
+      include 'libraries/main.php';  // インクルード
+      redirect(empty($_SESSION['user']));  // リダイレクト
+      from();  // ページ管理
 
     ?>
 
@@ -26,7 +26,7 @@
           <div>
           <p>画像を入力してください。</p>
           <input type="file" name="image">
-          <input class="button" type="submit" value="Add to calendar">
+          <input class="button" type="submit" value="Add to timeline">
           </div>
         </div>
       </form>
