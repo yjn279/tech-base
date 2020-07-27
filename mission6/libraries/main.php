@@ -12,7 +12,7 @@
   function from() {
 
     $from = $_SESSION['from'];
-    $_SESSION = basename(__FILE__, '.php');
+    $_SESSION['from'] = basename(__FILE__, '.php');
 
     return $from;
 

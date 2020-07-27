@@ -9,7 +9,7 @@
     <header>
     </header>
     <main>
-      <form action="timeline.php" method="POST">
+      <form action="timeline.php?from=signup" method="POST">
         <input type="text" name="name" placeholder="name" required>
         <input type="email" name="email" placeholder="e-mail" required>
         <input type="password" name="password" placeholder="password" required>
@@ -20,7 +20,6 @@
         
         include 'libraries/main.php';  // インクルード
         // redirect(isset($_SESSION['user']), 'timeline.php');  // リダイレクト
-        from();
         echo_error();  // エラー処理
         
       ?>

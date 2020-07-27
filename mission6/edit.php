@@ -43,9 +43,9 @@
     <main>
       <form action="plan.php?from=edit&id=<?= $id ?>&original=<?= $original ?>" method="POST">
         <input type="text" name="title" placeholder="タイトルを入力" value="<?= $title ?>" required>
-        <textarea name="schedule" cols="30" rows="10" placeholder="スケジュールを入力" value="<?= $schedule ?>" required></textarea>
+        <textarea name="schedule" cols="30" rows="10" placeholder="スケジュールを入力" required><?= $schedule ?></textarea>
         <div>
-          <textarea name="comment" cols="30" rows="10" placeholder="コメントを入力" value="<?= $comment ?>"></textarea>
+          <textarea name="comment" cols="30" rows="10" placeholder="コメントを入力"><?= $comment ?></textarea>
           <div>
           <p>画像を入力してください。</p>
           <input type="file" name="image">  <!-- valueどうする？ -->

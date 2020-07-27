@@ -22,7 +22,7 @@
 
       // from signup
 
-      if ($from == 'signup') {
+      if ($_GET['from'] == 'signup') {
 
 
         // フォームデータの取得
@@ -52,7 +52,7 @@
 
       // from login
 
-      elseif ($from == 'login') {
+      elseif ($_GET['from'] == 'login') {
 
 
         // フォームデータの取得
@@ -67,7 +67,7 @@
 
         // セッションの管理
 
-        if (isset($user)) {
+        if (!empty($user)) {
 
           $_SESSION['user'] = $user;
           $_SESSION['name'] = $name;
@@ -94,7 +94,7 @@
         <?php $plans = $plans_inst -> get_plans() ?>
 
          <?php foreach ($plans as $plan): ?>
-          <a id="plan" href="plan.php?id=<?= $plan['plans_id'] ?>">
+          <a id="plan" href="plan.php?from=timeline&id=<?= $plan['plans_id'] ?>">
             <img src="" alt="">
             <div>
               <h3><?= $plan['title'] ?></h3>

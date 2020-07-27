@@ -6,9 +6,9 @@
 
     function signup(string $name, string $email, string $password) {
 
-      $name = $this->escape($name);
-      $email = $this->escape($email);
-      $password = $this->escape($password);
+      $name = $this -> escape($name);
+      $email = $this -> escape($email);
+      $password = $this -> escape($password);
 
       $stmt = $this->pdo -> prepare('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
       $stmt -> bindParam(':name', $name);
@@ -24,8 +24,8 @@
     
     function login(string $email, string $password) {
 
-      $email = $this->escape($email);
-      $password = $this->escape($password);
+      $email = $this -> escape($email);
+      $password = $this -> escape($password);
       
       $stmt = $this->pdo -> prepare('SELECT * FROM users WHERE email=:email AND password=:password');
       $stmt -> bindParam(':email', $email);

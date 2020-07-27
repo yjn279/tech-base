@@ -25,7 +25,7 @@
 
       // from make_plan
 
-      if ($from == 'make_plan' && isset($_POST['title'])) {
+      if ($from == 'make_plan' && !empty($_POST['title'])) {
 
         
         // データの取得
@@ -48,7 +48,7 @@
 
       // from timeline
       
-      elseif($from == 'timeline' && isset($_GET['id'])) {
+      elseif($_GET['from'] == 'timeline' && !empty($_GET['id'])) {
 
         $id = $_GET['id'];
         $plan = $plans -> get_plans('plans_id', $id);

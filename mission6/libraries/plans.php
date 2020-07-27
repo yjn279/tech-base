@@ -3,7 +3,7 @@
 
   class Plans extends DataBase {
 
-    
+    // make_plan -> make に変更
     function make_plan(string $user, bool $original, string $title, string $schedule, string $comment=NULL, lob $image=NULL) {
 
       $user = (int) $this->escape($user);

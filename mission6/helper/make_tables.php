@@ -23,7 +23,7 @@
   // テーブル作成
 
   $tables = [
-
+    // email unique
     'users (
       users_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       name CHAR(32),
