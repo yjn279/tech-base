@@ -4,26 +4,27 @@
   // インクルード
 
   include 'libraries/main.php';
-  $users = new Users();
+  $plans = new Plans();
 
 
   // リダイレクト
-
-  redirect('timeline.php', empty($_SESSION['user'] || $_GET['from'] || $_POST['title'] || $_POST['schedule']));
-  redirect('timeline.php', $_GET['from'] != 'make_plan');
+  redirect('timeline.php', empty($_SESSION['user'] || $_GET['id'] ||$_POST['title'] || $_POST['schedule']));
 
 
   // データの取得
-
+  $user = $_SESSION['user'];
+  $id = $_GET['id'];
   $title = $_POST['title'];
   $schedule = $_POST['schedule'];
   $comment = $_POST['comment'];
   $image = NULL;  // $_POST['image'];
-  $name_id = $_SESSION['user'];
+
+  $plan = $plans -> get_plan($id);
+  $name_id = $plan['users_id'];
 
 
-  // プランの登録
-  $id = $plans -> make_plan($user, TRUE, $title, $schedule, $comment, $image);
+  // プランの編集
+  if ($user == $name_id) $plans -> edit_plan($id, $title, $schedule, $comment, $image);
 
 
   // リダイレクト

@@ -9,17 +9,16 @@
 
   // リダイレクト
 
-  redirect('timeline.php', empty($_SESSION['user'] || $_GET['from'] || $_POST['title'] || $_POST['schedule']));
-  redirect('timeline.php', $_GET['from'] != 'make_plan');
+  redirect('timeline.php', empty($_SESSION['user'] || $_POST['title'] || $_POST['schedule']));
 
 
   // データの取得
 
+  $user = $_SESSION['user'];
   $title = $_POST['title'];
   $schedule = $_POST['schedule'];
   $comment = $_POST['comment'];
   $image = NULL;  // $_POST['image'];
-  $name_id = $_SESSION['user'];
 
 
   // プランの登録

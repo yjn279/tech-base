@@ -37,34 +37,6 @@
         $name = $users -> get_user($name_id);
 
       }
-
-
-      // form edit
-
-      elseif($_GET['from'] == 'edit') {
-
-        $id = $_GET['id'];
-        $title = $_POST['title'];
-        $schedule = $_POST['schedule'];
-        $comment = $_POST['comment'];
-        $image = NULL;  // $_POST['image'];
-        $name_id = $_SESSION['user'];
-
-        if ($_GET['original']) {
-
-          $plans -> edit_plan($id, $title, $schedule, $comment, $image);
-          $plan = $plans -> get_plans('plans_id', $id, 'created_at');
-          $date = $plan[0]['created_at'];
-
-        } else {
-          
-          // プランの登録・取得
-          $id = $plans -> make_plan($user, FALSE, $title, $schedule, $comment, $image);
-          $plan = $plans -> get_plans('plans_id', $id, 'created_at');
-          $date = $plan[0]['created_at'];
-
-        }
-      }
     ?>
 
     <main>
@@ -85,7 +57,7 @@
           <a class="button" href="edit.php?id=<?= $id ?>">Edit</a>
 
           <?php if($name_id == $user): ?>
-            <a class="button" href="delete.php?id=<?= $id ?>">Delete</a>
+            <a class="button" href="backend/delete.php?id=<?= $id ?>">Delete</a>
           <?php endif ?>
 
           <!-- <p class="button">Add to lists</p> -->

@@ -42,8 +42,6 @@
       $stmt -> bindParam(':image', $image, PDO::PARAM_LOB);
       $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
       $stmt -> execute();  // 実行が失敗した場合のエラー処理
-    
-      return $id;
 
     }
 
