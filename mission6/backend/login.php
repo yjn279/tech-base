@@ -3,7 +3,7 @@
 
   // インクルード
 
-  include 'libraries/main.php';
+  include '../libraries/main.php';
   $users = new Users();
 
 

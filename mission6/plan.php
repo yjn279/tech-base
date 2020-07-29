@@ -20,7 +20,7 @@
 
 
       // リダイレクト
-      redirect('timeline.php', empty($_GET['id']);
+      redirect('timeline.php', empty($_GET['id']));
 
 
       // データの取得

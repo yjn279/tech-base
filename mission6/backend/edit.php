@@ -3,7 +3,7 @@
 
   // インクルード
 
-  include 'libraries/main.php';
+  include '../libraries/main.php';
   $plans = new Plans();
 
 
@@ -28,7 +28,7 @@
 
 
   // リダイレクト
-  redirect("plan.php?id=$id")
+  redirect("../plan.php?id=$id")
 
 
 ?>

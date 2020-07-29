@@ -17,7 +17,7 @@
     ?>
 
     <main>
-      <form action="backend/make_plan?" method="POST">
+      <form action="backend/make_plan?original=TRUE" method="POST">
         <input type="text" name="title" placeholder="タイトルを入力" required>
         <textarea name="schedule" cols="30" rows="10" placeholder="スケジュールを入力" required></textarea>
         <div>

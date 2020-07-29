@@ -35,11 +35,14 @@
       $name = $users -> get_user($name_id);
       $file = $_SESSION['user'] == $name_id ? 'edit' : 'make_plan';
 
+      if ($user == $name_id) $file = "backend/edit.php?id=$id";
+      else $file = 'backend/make_plan.php?original=FALSE';
+
 
     ?>
 
     <main>
-      <form action="backend/<?= $file ?>.php?id=<?= $id ?>" method="POST">
+      <form action="<?= $file ?>" method="POST">
         <input type="text" name="title" placeholder="タイトルを入力" value="<?= $title ?>" required>
         <textarea name="schedule" cols="30" rows="10" placeholder="スケジュールを入力" required><?= $schedule ?></textarea>
           <div>

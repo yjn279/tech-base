@@ -61,12 +61,12 @@
     function get_plan(string $id) {
 
       $id = (int) $this -> escape($id);    
-      $stmt = $this->pdo -> prepare("SELECT * FROM plans WHERE plans_id = :id");
+      $stmt = $this->pdo -> prepare('SELECT * FROM plans WHERE plans_id = :id');
       $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
       $stmt -> execute();
       // エラー処理
     
-      return $stmt -> fetchAll();
+      return $stmt -> fetch();
     
     }
     
