@@ -9,15 +9,8 @@
 
   // リダイレクト
 
-  redirect('timeline.php', empty($_GET['from'] ||　$_GET['name'] || $_POST['email'] || $_POST['password']));
+  redirect('timeline.php', empty($_GET['from'] || $_POST['name'] || $_POST['email'] || $_POST['password']));
   redirect('timeline.php', $_GET['from'] != 'signup');
-
-
-  // フォームデータの取得
-
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $password = $_POST['password'];
 
 
   // フォームデータの取得
@@ -40,7 +33,7 @@
 
 
   // リダイレクト
-  redirect('timeline');
+  redirect('../timeline.php');
 
 
 ?>

@@ -32,11 +32,11 @@
     $_SESSION['email'] = $email;
     $_SESSION['password'] = $password;
 
-    redirect('timeline.php');
+    redirect('../timeline.php');
 
   } else {
 
-    $_SESSION['error'] = 'メールアドレスまたはパスワードが正しくありません。';
+    $_SESSION['message'] = 'メールアドレスまたはパスワードが正しくありません。';
     redirect('login.php');
 
   }

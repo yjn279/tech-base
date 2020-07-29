@@ -19,7 +19,7 @@
 
         include 'libraries/main.php';
         redirect('timeline.php', !empty($_SESSION['user']));
-        echo_error();  // エラー処理
+        message();  // エラー処理
         
       ?>
 

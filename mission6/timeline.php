@@ -43,6 +43,7 @@
           <div id="side_calendar">Calendar</div>
           <a class="button" href="make_plan.php">Make new plan!</a>
           <!-- Lists 実装予定 -->
+          <a class="button" href="backend/logout.php">Logout</a>
         <?php endif ?>
 
       </div>

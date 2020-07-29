@@ -35,12 +35,11 @@
       $name_id = $plan['users_id'];
       $name = $users -> get_user($name_id);
 
-      $user = $_SESSION['user'];
-
 
     ?>
 
     <main>
+      <a class="button" href="timeline.php">Go timeline</a>
       <img src="" alt="">
       <div id="details">
         <h3><?= $title ?></h3>
@@ -50,14 +49,14 @@
         <p><?= $name ?></p>
 
 
-        <?php if(empty($user)): ?>
+        <?php if(empty($_SESSION['user'])): ?>
           <a class="button" href="login.php">Login</a>
           <a class="button" href="signup.php">Signup</a>
         <?php else: ?>
           <a class="button" href="">Add to calendar</a>
           <a class="button" href="edit.php?id=<?= $id ?>">Edit</a>
 
-          <?php if($user == $name_id): ?>
+          <?php if($_SESSION['user'] == $name_id): ?>
             <a class="button" href="backend/delete.php?id=<?= $id ?>">Delete</a>
           <?php endif ?>
 

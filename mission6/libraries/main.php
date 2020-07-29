@@ -22,11 +22,11 @@
 
   // エラー表示
 
-  function echo_error() {
-    if(isset($_SESSION['error'])) {
+  function message() {
+    if(isset($_SESSION['message'])) {
 
-      echo "<p>{$_SESSION['error']}</p>";
-      unset($_SESSION['error']);
+      echo "<p>{$_SESSION['message']}</p>";
+      unset($_SESSION['message']);
 
     }
   }
