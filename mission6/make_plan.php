@@ -13,12 +13,11 @@
 
       include 'libraries/main.php';  // インクルード
       redirect(empty($_SESSION['user']));  // リダイレクト
-      from();  // ページ管理
 
     ?>
 
     <main>
-      <form action="plan.php" method="POST">
+      <form action="plan.php?from=make_plan" method="POST">
         <input type="text" name="title" placeholder="タイトルを入力" required>
         <textarea name="schedule" cols="30" rows="10" placeholder="スケジュールを入力" required></textarea>
         <div>

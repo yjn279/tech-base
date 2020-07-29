@@ -17,7 +17,6 @@
       include 'libraries/main.php';
       $users = new Users();
       $plans_inst = new Plans();
-      $from = from();
 
 
       // from signup

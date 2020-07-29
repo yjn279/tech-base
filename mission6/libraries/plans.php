@@ -6,11 +6,11 @@
     // make_plan -> make に変更
     function make_plan(string $user, bool $original, string $title, string $schedule, string $comment=NULL, lob $image=NULL) {
 
-      $user = (int) $this->escape($user);
-      $title = $this->escape($title);
-      $schedule = $this->escape($schedule);
-      $comment = $this->escape($comment);
-      $image = $this->escape($image);
+      $user = (int) $this -> escape($user);
+      $title = $this -> escape($title);
+      $schedule = $this -> escape($schedule);
+      $comment = $this -> escape($comment);
+      $image = $this -> escape($image);
       $original = $original ? 1 : 0;
 
       $stmt = $this->pdo -> prepare('INSERT INTO plans (title, schedule, comment, image, users_id, original) VALUES(:title, :schedule, :comment, :image, :user, :original)');
@@ -19,7 +19,7 @@
       $stmt -> bindParam(':comment', $comment);
       $stmt -> bindParam(':image', $image, PDO::PARAM_LOB);
       $stmt -> bindParam(':user', $user, PDO::PARAM_INT);
-      $stmt -> biddParam(':original', $original, PDO::PARAM_INT);
+      $stmt -> bindParam(':original', $original, PDO::PARAM_INT);
       $stmt -> execute();  // 実行が失敗した場合のエラー処理
     
       return (int) $this->pdo -> lastInsertId();
@@ -29,22 +29,34 @@
 
     function edit_plan(string $id, string $title, string $schedule, string $comment=NULL, lob $image=NULL) {
 
-      $id = (int) $this->escape($id);
-      $title = $this->escape($title);
-      $schedule = $this->escape($schedule);
-      $comment = $this->escape($comment);
-      $image = $this->escape($image);
+      $id = (int) $this -> escape($id);
+      $title = $this -> escape($title);
+      $schedule = $this -> escape($schedule);
+      $comment = $this -> escape($comment);
+      $image = $this -> escape($image);
 
       $stmt = $this->pdo -> prepare('UPDATE plans SET title=:title, schedule=:schedule, comment=:comment, image=:image WHERE plans_id = :id');
       $stmt -> bindParam(':title', $title);
       $stmt -> bindParam(':schedule', $schedule);
       $stmt -> bindParam(':comment', $comment);
       $stmt -> bindParam(':image', $image, PDO::PARAM_LOB);
-      $stmt -> biddParam(':id', $id, PDO::PARAM_INT);
+      $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
       $stmt -> execute();  // 実行が失敗した場合のエラー処理
     
       return $id;
 
+    }
+
+
+    function delete(string $id) {
+
+      $id = (int) $this -> escape($id);
+
+      $sql = 'DELETE FROM plans WHERE plans_id=:id';
+      $stmt = $this->pdo -> prepare($sql);
+      $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
+      $stmt -> execute();
+      
     }
     
     

@@ -8,17 +8,6 @@
   include 'plans.php';
 
 
-  // ページ管理
-  function from() {
-
-    $from = $_SESSION['from'];
-    $_SESSION['from'] = basename(__FILE__, '.php');
-
-    return $from;
-
-    }
-
-  
   // セッション管理
 
   function redirect(bool $condition, string $location = 'login.php') {

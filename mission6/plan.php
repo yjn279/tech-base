@@ -20,12 +20,11 @@
 
       $user = $_SESSION['user'];
       $name = $_SESSION['name'];
-      $from = from();
 
 
       // from make_plan
 
-      if ($from == 'make_plan' && !empty($_POST['title'])) {
+      if ($_GET['from'] == 'make_plan' && !empty($_POST['title'])) {
 
         
         // データの取得
@@ -72,7 +71,7 @@
         $schedule = $_POST['schedule'];
         $comment = $_POST['comment'];
         $image = NULL;  // $_POST['image'];
-        $name = $_SESSION['user'];
+        $name_id = $_SESSION['user'];
 
         if ($_GET['original']) {
 
