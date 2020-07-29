@@ -12,7 +12,7 @@
     <?php
 
       include 'libraries/main.php';  // インクルード
-      redirect('timeline.php'empty($_SESSION['user']));  // リダイレクト
+      redirect(empty($_SESSION['user']));  // リダイレクト
 
     ?>
 
