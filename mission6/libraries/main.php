@@ -10,7 +10,7 @@
 
   // セッション管理
 
-  function redirect(bool $condition, string $location = 'login.php') {
+  function redirect(string $location, bool $condition=true) {
     
     if ($condition) {
       header("Location: $location");

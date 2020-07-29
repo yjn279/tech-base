@@ -16,9 +16,9 @@
       </form>
       
       <?php
-        
-        include 'libraries/main.php';  //インクルード
-        // redirect(isset($_SESSION['user']), 'timeline.php');  // リダイレクト
+
+        include 'libraries/main.php';
+        redirect('timeline.php', !empty($_SESSION['user']));
         echo_error();  // エラー処理
         
       ?>

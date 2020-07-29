@@ -11,79 +11,9 @@
 
     <?php
 
-
-      // インクルード
-
       include 'libraries/main.php';
-      $users = new Users();
       $plans_inst = new Plans();
 
-
-      // from signup
-
-      if ($_GET['from'] == 'signup') {
-
-
-        // フォームデータの取得
-
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-
-        // アカウントの登録
-        $user = $users -> signup($name, $email, $password);
-
-
-        // セッションの登録
-
-        $_SESSION['user'] = $user;
-        $_SESSION['name'] = $name;
-        $_SESSION['email'] = $email;
-        $_SESSION['password'] = $password;
-
-
-        // エラー処理
-
-
-      }
-
-
-      // from login
-
-      elseif ($_GET['from'] == 'login') {
-
-
-        // フォームデータの取得
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        
-
-        // アカウントの認証
-        list($user, $name) = $users -> login($email, $password);
-        
-
-        // セッションの管理
-
-        if (!empty($user)) {
-
-          $_SESSION['user'] = $user;
-          $_SESSION['name'] = $name;
-          $_SESSION['email'] = $email;
-          $_SESSION['password'] = $password;
-
-        } else {
-
-          $_SESSION['error'] = 'メールアドレスまたはパスワードが正しくありません。';
-          header('Location: login.php');
-          exit;
-
-        }
-
-        // エラー処理
-
-      }
     ?>
 
     <main>
