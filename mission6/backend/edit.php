@@ -4,7 +4,7 @@
   // インクルード
 
   include 'libraries/main.php';
-  $plans = new Plans();
+  $users = new Users();
 
 
   // リダイレクト
