@@ -6,7 +6,7 @@
   include 'libraries/main.php';
   
   $plans = new Plans();
-  redirect(empty($_GET['from']) || $_GET['id'] || $_SESSION['user']), 'timeline.php');
+  redirect('timeline.php', empty($_GET['from']) || $_GET['id'] || $_SESSION['user']));
 
 
   $user = $_SESSION['user'];
