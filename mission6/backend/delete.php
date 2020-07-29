@@ -1,13 +1,7 @@
 <?php
 
-
-  // インクルード
-  
   include 'libraries/main.php';
-  
   $plans = new Plans();
-  redirect('timeline.php', empty($_GET['from']) || $_GET['id'] || $_SESSION['user']));
-
 
   $user = $_SESSION['user'];
   $from = $_GET['from'];
@@ -18,6 +12,5 @@
   if ($from == 'plan' && $user == $name_id) $plans -> delete($id);
 
   redirect('timeline.php');
-
   
 ?>

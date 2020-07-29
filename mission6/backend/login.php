@@ -7,12 +7,6 @@
   $users = new Users();
 
 
-  // リダイレクト
-
-  redirect('timeline.php', empty($_GET['from'] || $_POST['email'] || $_POST['password']));
-  redirect('timeline.php', $_GET['from'] != 'login');
-
-
   // フォームデータの取得
 
   $email = $_POST['email'];
