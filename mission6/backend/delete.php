@@ -4,9 +4,9 @@
   // インクルード
   
   include 'libraries/main.php';
-  
   $plans = new Plans();
-  redirect('timeline.php', empty($_GET['from']) || $_GET['id'] || $_SESSION['user']));
+  
+  redirect('timeline.php', empty($_SESSION['user']) || $_GET['from']) || $_GET['id']);
 
 
   $user = $_SESSION['user'];

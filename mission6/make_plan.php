@@ -12,12 +12,12 @@
     <?php
 
       include 'libraries/main.php';  // インクルード
-      redirect(empty($_SESSION['user']));  // リダイレクト
+      redirect('login.php', empty($_SESSION['user']));  // リダイレクト
 
     ?>
 
     <main>
-      <form action="plan.php?from=make_plan" method="POST">
+      <form action="backend/make_plan?from=make_plan" method="POST">
         <input type="text" name="title" placeholder="タイトルを入力" required>
         <textarea name="schedule" cols="30" rows="10" placeholder="スケジュールを入力" required></textarea>
         <div>

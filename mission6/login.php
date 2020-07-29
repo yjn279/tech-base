@@ -9,7 +9,7 @@
     <header>
     </header>
     <main>
-      <form action="timeline.php?from=login" method="POST">
+      <form action="backend/login.php?from=login" method="POST">
         <input type="email" name="email" placeholder="e-mail" required>
         <input type="password" name="password" placeholder="password" required>
         <input class="button" type="submit" value="Login">
