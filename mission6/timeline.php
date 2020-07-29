@@ -23,7 +23,7 @@
         <?php $plans = $plans_inst -> get_plans() ?>
 
          <?php foreach ($plans as $plan): ?>
-          <a id="plan" href="plan.php?from=timeline&id=<?= $plan['plans_id'] ?>">
+          <a id="plan" href="plan.php?id=<?= $plan['plans_id'] ?>">
             <img src="" alt="">
             <div>
               <h3><?= $plan['title'] ?></h3>

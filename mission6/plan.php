@@ -18,25 +18,26 @@
       $users = new Users();
       $plans = new Plans();
 
+
+      // リダイレクト
+      redirect('timeline.php', empty($_GET['id']);
+
+
+      // データの取得
+
+      $id = $_GET['id'];
+      $plan = $plans -> get_plan($id);
+      $title = $plan['title'];
+      $schedule = $plan['schedule'];
+      $comment = $plan['comment'];
+      $image = $plan['image'];
+      $date = $plan['created_at'];
+      $name_id = $plan['users_id'];
+      $name = $users -> get_user($name_id);
+
       $user = $_SESSION['user'];
-      $name = $_SESSION['name'];
 
 
-      // from timeline
-      
-      if($_GET['from'] == 'timeline' && !empty($_GET['id'])) {
-
-        $id = $_GET['id'];
-        $plan = $plans -> get_plans('plans_id', $id);
-        $title = $plan[0]['title'];
-        $schedule = $plan[0]['schedule'];
-        $comment = $plan[0]['comment'];
-        $image = $plan[0]['image'];
-        $date = $plan[0]['created_at'];
-        $name_id = $plan[0]['users_id'];
-        $name = $users -> get_user($name_id);
-
-      }
     ?>
 
     <main>
@@ -56,7 +57,7 @@
           <a class="button" href="">Add to calendar</a>
           <a class="button" href="edit.php?id=<?= $id ?>">Edit</a>
 
-          <?php if($name_id == $user): ?>
+          <?php if($user == $name_id): ?>
             <a class="button" href="backend/delete.php?id=<?= $id ?>">Delete</a>
           <?php endif ?>
 
