@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'assets/stylesheets.php' ?>
     <title>Plan</title>
   </head>
   <body>
@@ -40,11 +41,11 @@
     ?>
 
     <main>
-      <a class="button" href="timeline.php">Timeline</a>
-      <a class="button" href="backend/image.php?id=<?= $id ?>">Timeline</a>
+      <a class="btn btn-default btn-lg btn-block" href="timeline.php">Timeline</a>
+      <a class="btn btn-default btn-lg btn-block" href="backend/image.php?id=<?= $id ?>">Timeline</a>
       <img src="backend/image.php?<?= $id ?>" alt="abc" width="100px" height="auto">
       <div id="details">
-        <h3><?= $title ?></h3>
+        <h2><?= $title ?></h2>
         <pre><?= $schedule ?></pre>
         <pre><?= $comment ?></pre>
         <p><?= $date ?></p>
@@ -52,17 +53,17 @@
 
 
         <?php if(empty($_SESSION['user'])): ?>
-          <a class="button" href="login.php">Login</a>
-          <a class="button" href="signup.php">Signup</a>
+          <a class="btn btn-primary btn-lg btn-block" href="login.php">Login</a>
+          <a class="btn btn-default btn-lg btn-block" href="signup.php">Signup</a>
         <?php else: ?>
-          <!-- <a class="button" href="">Add to calendar</a> -->
-          <a class="button" href="edit.php?id=<?= $id ?>">Edit</a>
+          <!-- <a class="btn btn-primary btn-lg btn-block" href="">Add to calendar</a> -->
+          <a class="btn btn-primary btn-lg btn-block" href="edit.php?id=<?= $id ?>">Edit</a>
 
           <?php if($_SESSION['user'] == $name_id): ?>
-            <a class="button" href="backend/delete.php?id=<?= $id ?>">Delete</a>
+            <a class="btn btn-default btn-lg btn-block" href="backend/delete.php?id=<?= $id ?>">Delete</a>
           <?php endif ?>
 
-          <!-- <p class="button">Add to lists</p> -->
+          <!-- <p class="btn btn-primary btn-lg btn-block">Add to lists</p> -->
         <?php endif ?>
 
 
@@ -70,5 +71,6 @@
     </main>
     <footer>
     </footer>
+    <?php include 'assets/scripts.php' ?>
   </body>
 </html>

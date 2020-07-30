@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'assets/stylesheets.php' ?>
     <title>Make a New Plan!</title>
   </head>
   <body>
@@ -18,19 +19,23 @@
 
     <main>
       <form action="backend/make_plan.php?original=TRUE" method="POST" enctype="multipart/form-data">
-        <input type="text" name="title" placeholder="タイトルを入力" required>
-        <textarea name="schedule" cols="30" rows="10" placeholder="スケジュールを入力" required></textarea>
+        <h4>Title</h4>
+        <input class="form-control" type="text" name="title" placeholder="title" required>
+        <h4>Schedule</h4>
+        <textarea class="form-control" name="schedule" cols="30" rows="10" placeholder="schedule" required></textarea>
         <div>
-          <textarea name="comment" cols="30" rows="10" placeholder="コメントを入力"></textarea>
+          <h4>Comment</h4>
+          <textarea class="form-control" name="comment" cols="30" rows="10" placeholder="comment"></textarea>
           <div>
-          <p>画像を入力してください。</p>
-          <input type="file" name="image" accept="image/jpg">
-          <input class="button" type="submit" value="Make!">
+            <h4>Input a image</h4>
+            <input class="form-control" type="file" name="image" accept="image/*">
+            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Make!">
           </div>
         </div>
       </form>
     </main>
     <footer>
     </footer>
+    <?php include 'assets/scripts.php' ?>
   </body>
 </html>

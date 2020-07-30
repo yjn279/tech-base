@@ -3,16 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'assets/stylesheets.php' ?>
     <title>Login</title>
   </head>
   <body>
     <header>
     </header>
     <main>
+      <h1>Login</h1>
       <form action="backend/login.php" method="POST">
-        <input type="email" name="email" placeholder="e-mail" required>
-        <input type="password" name="password" placeholder="password" required>
-        <input class="button" type="submit" value="Login">
+        <h4>Email adress</h4>
+        <input class="form-control" type="email" name="email" placeholder="e-mail" required>
+        <h4>Password</h4>
+        <input class="form-control" type="password" name="password" placeholder="password" required>
+        <input class="btn btn-primary btn-lg btn-block" type="submit" value="Login">
       </form>
       
       <?php
@@ -23,9 +27,10 @@
         
       ?>
 
-      <a class="button" href="signup.php">Signup</a>
+      <a class="btn btn-defalut btn-lg btn-block" href="signup.php">Signup</a>
     </main>
     <footer>
     </footer>
+    <?php include 'assets/scripts.php' ?>
   </body>
 </html>
