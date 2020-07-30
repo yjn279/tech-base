@@ -24,7 +24,7 @@
           <textarea name="comment" cols="30" rows="10" placeholder="コメントを入力"></textarea>
           <div>
           <p>画像を入力してください。</p>
-          <input type="file" name="image" accept="image/*">
+          <input type="file" name="image" accept="image/jpg">
           <input class="button" type="submit" value="Make!">
           </div>
         </div>

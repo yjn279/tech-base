@@ -21,6 +21,7 @@
 
       // リダイレクト
       redirect('timeline.php', empty($_GET['id']));
+      // header('Content-type:image/*');
 
 
       // データの取得
@@ -40,7 +41,8 @@
 
     <main>
       <a class="button" href="timeline.php">Timeline</a>
-      <img src="" alt="">
+      <a class="button" href="backend/image.php?id=<?= $id ?>">Timeline</a>
+      <img src="backend/image.php?<?= $id ?>" alt="abc" width="100px" height="auto">
       <div id="details">
         <h3><?= $title ?></h3>
         <pre><?= $schedule ?></pre>

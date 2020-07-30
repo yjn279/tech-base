@@ -17,7 +17,7 @@
       $stmt -> bindParam(':title', $title);
       $stmt -> bindParam(':schedule', $schedule);
       $stmt -> bindParam(':comment', $comment);
-      $stmt -> bindParam(':image', $image, PDO::PARAM_LOB);
+      $stmt -> bindValue(':image', $image, PDO::PARAM_STR);
       $stmt -> bindParam(':user', $user, PDO::PARAM_INT);
       $stmt -> bindParam(':original', $original, PDO::PARAM_INT);
       $stmt -> execute();  // 実行が失敗した場合のエラー処理
@@ -27,7 +27,7 @@
     }
 
 
-    function edit_plan(string $id, string $title, string $schedule, string $comment=NULL, lob $image=NULL) {
+    function edit_plan(string $id, string $title, string $schedule, string $comment=NULL, string $image=NULL) {
 
       $id = (int) $this -> escape($id);
       $title = $this -> escape($title);
@@ -39,7 +39,7 @@
       $stmt -> bindParam(':title', $title);
       $stmt -> bindParam(':schedule', $schedule);
       $stmt -> bindParam(':comment', $comment);
-      $stmt -> bindParam(':image', $image, PDO::PARAM_LOB);
+      $stmt -> bindParam(':image', $image, PDO::PARAM_STR);
       $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
       $stmt -> execute();  // 実行が失敗した場合のエラー処理
 
