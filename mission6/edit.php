@@ -49,7 +49,7 @@
           <textarea name="comment" cols="30" rows="10" placeholder="コメントを入力"><?= $comment ?></textarea>
           <div>
           <p>画像を入力してください。</p>
-          <input type="file" name="image">  <!-- valueどうする？ -->
+          <input type="file" name="image" accept="image/*">  <!-- valueどうする？ -->
           <input class="button" type="submit" value="Edit">
           </div>
         </div>

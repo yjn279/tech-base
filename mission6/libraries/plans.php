@@ -4,7 +4,7 @@
   class Plans extends DataBase {
 
     // make_plan -> make に変更
-    function make_plan(string $user, bool $original, string $title, string $schedule, string $comment=NULL, lob $image=NULL) {
+    function make_plan(string $user, bool $original, string $title, string $schedule, string $comment=NULL, string $image=NULL) {
 
       $user = (int) $this -> escape($user);
       $title = $this -> escape($title);
