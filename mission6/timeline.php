@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include 'includes/stylesheets.php' ?>
     <title>Timeline</title>
   </head>
   <body>
@@ -50,5 +51,6 @@
     </main>
     <footer>
     </footer>
+    <?php include 'assets/scripts.php' ?>
   </body>
 </html>
