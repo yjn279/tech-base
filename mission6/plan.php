@@ -39,7 +39,7 @@
     ?>
 
     <main>
-      <a class="button" href="timeline.php">Go timeline</a>
+      <a class="button" href="timeline.php">Timeline</a>
       <img src="" alt="">
       <div id="details">
         <h3><?= $title ?></h3>
@@ -53,7 +53,7 @@
           <a class="button" href="login.php">Login</a>
           <a class="button" href="signup.php">Signup</a>
         <?php else: ?>
-          <a class="button" href="">Add to calendar</a>
+          <!-- <a class="button" href="">Add to calendar</a> -->
           <a class="button" href="edit.php?id=<?= $id ?>">Edit</a>
 
           <?php if($_SESSION['user'] == $name_id): ?>

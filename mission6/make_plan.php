@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make plan</title>
+    <title>Make a New Plan</title>
   </head>
   <body>
     <header>
@@ -25,7 +25,7 @@
           <div>
           <p>画像を入力してください。</p>
           <input type="file" name="image">
-          <input class="button" type="submit" value="Add to timeline">
+          <input class="button" type="submit" value="Make">
           </div>
         </div>
       </form>

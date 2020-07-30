@@ -9,8 +9,7 @@
 
   // リダイレクト
 
-  redirect('timeline.php', empty($_GET['from'] || $_POST['email'] || $_POST['password']));
-  redirect('timeline.php', $_GET['from'] != 'login');
+  redirect('timeline.php', empty($_POST['email'] || $_POST['password']));
 
 
   // フォームデータの取得
@@ -37,7 +36,7 @@
   } else {
 
     $_SESSION['message'] = 'メールアドレスまたはパスワードが正しくありません。';
-    redirect('login.php');
+    redirect('../login.php');
 
   }
 ?>

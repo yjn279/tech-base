@@ -40,9 +40,9 @@
           <a class="button" href="login.php">Login</a>
           <a class="button" href="signup.php">Signup</a>
         <?php else: ?>
-          <div id="side_calendar">Calendar</div>
-          <a class="button" href="make_plan.php">Make new plan!</a>
+          <!-- <div id="side_calendar">Calendar</div> -->
           <!-- Lists 実装予定 -->
+          <a class="button" href="make_plan.php">Make a New Plan!</a>
           <a class="button" href="backend/logout.php">Logout</a>
         <?php endif ?>
 
