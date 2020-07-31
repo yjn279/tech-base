@@ -25,7 +25,7 @@
 
          <?php foreach ($plans as $plan): ?>
           <a id="plan" href="plan.php?id=<?= $plan['plans_id'] ?>">
-            <img src="" alt="">
+          <img src="backend/image.php?id=<?= $plan['plans_id'] ?>">
             <div>
               <h2><?= $plan['title'] ?></h2>
               <pre><?= $plan['schedule'] ?></pre>

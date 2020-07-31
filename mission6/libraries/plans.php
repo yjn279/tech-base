@@ -10,14 +10,14 @@
       $title = $this -> escape($title);
       $schedule = $this -> escape($schedule);
       $comment = $this -> escape($comment);
-      $image = $this -> escape($image);
+      // $image = $this -> escape($image);  XSSはどうする？
       $original = $original ? 1 : 0;
 
       $stmt = $this->pdo -> prepare('INSERT INTO plans (title, schedule, comment, image, users_id, original) VALUES(:title, :schedule, :comment, :image, :user, :original)');
       $stmt -> bindParam(':title', $title);
       $stmt -> bindParam(':schedule', $schedule);
       $stmt -> bindParam(':comment', $comment);
-      $stmt -> bindValue(':image', $image, PDO::PARAM_STR);
+      $stmt -> bindParam(':image', $image);
       $stmt -> bindParam(':user', $user, PDO::PARAM_INT);
       $stmt -> bindParam(':original', $original, PDO::PARAM_INT);
       $stmt -> execute();  // 実行が失敗した場合のエラー処理
@@ -33,13 +33,13 @@
       $title = $this -> escape($title);
       $schedule = $this -> escape($schedule);
       $comment = $this -> escape($comment);
-      $image = $this -> escape($image);
+      // $image = $this -> escape($image);
 
       $stmt = $this->pdo -> prepare('UPDATE plans SET title=:title, schedule=:schedule, comment=:comment, image=:image WHERE plans_id = :id');
       $stmt -> bindParam(':title', $title);
       $stmt -> bindParam(':schedule', $schedule);
       $stmt -> bindParam(':comment', $comment);
-      $stmt -> bindParam(':image', $image, PDO::PARAM_STR);
+      $stmt -> bindParam(':image', $image);
       $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
       $stmt -> execute();  // 実行が失敗した場合のエラー処理
 

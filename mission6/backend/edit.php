@@ -17,7 +17,7 @@
   $title = $_POST['title'];
   $schedule = $_POST['schedule'];
   $comment = $_POST['comment'];
-  $image = NULL;  // $_POST['image'];
+  $image = file_get_contents($_FILES['image']['tmp_name']);
 
   $plan = $plans -> get_plan($id);
   $name_id = $plan['users_id'];

@@ -16,11 +16,8 @@
   $plan = $plans -> get_plan($id);
   $image = $plan['image'];
 
-  header('Content-Type: image/jpg');
+  header('Content-Type: image/jpeg');
   echo $image;
-
-
-  // exit();
 
 
 ?>
