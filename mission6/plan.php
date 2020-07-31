@@ -42,7 +42,7 @@
 
     <main>
       <a class="btn btn-default btn-lg btn-block" href="timeline.php">Timeline</a>
-      <img src="backend/image.php?id=<?= $id ?>">
+      <img class="rounded mx-auto d-block" src="backend/image.php?id=<?= $id ?>" alt="image">
       <div id="details">
         <h2><?= $title ?></h2>
         <pre><?= $schedule ?></pre>

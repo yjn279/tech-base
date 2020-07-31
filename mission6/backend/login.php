@@ -35,8 +35,7 @@
 
   } else {
 
-    $_SESSION['message'] = 'メールアドレスまたはパスワードが正しくありません。';
-    redirect('../login.php');
+    redirect('../login.php?error=TRUE');
 
   }
 ?>

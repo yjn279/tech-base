@@ -17,25 +17,27 @@
 
     ?>
 
-    <main>
-      <div id="main_column">
+    <main class="container-fluid">
+      <div class="row">
+        <div class="col-9 list-group list-group-flush">
 
 
         <?php $plans = $plans_inst -> get_plans() ?>
 
-         <?php foreach ($plans as $plan): ?>
-          <a id="plan" href="plan.php?id=<?= $plan['plans_id'] ?>">
-          <img src="backend/image.php?id=<?= $plan['plans_id'] ?>">
-            <div>
+          <?php foreach ($plans as $plan): ?>
+          <a class="list-group-item list-group-item-action d-flex justify-content-around" href="plan.php?id=<?= $plan['plans_id'] ?>">
+            <img class="" src="backend/image.php?id=<?= $plan['plans_id'] ?>" alt="image">
+            <div class="">
               <h2><?= $plan['title'] ?></h2>
               <pre><?= $plan['schedule'] ?></pre>
+              <pre><?= $plan['comment'] ?></pre>
             </div>
           </a>
         <?php endforeach ?>
 
 
-      </div>
-      <div id="side_column">
+        </div>
+        <div class="col-3">
 
         <?php if(empty($_SESSION['user'])): ?>
           <a class="btn btn-primary btn-lg btn-block" href="login.php">Login</a>
@@ -47,6 +49,7 @@
           <a class="btn btn-default btn-lg btn-block" href="backend/logout.php">Logout</a>
         <?php endif ?>
 
+        </div>
       </div>
     </main>
     <footer>
