@@ -9,9 +9,9 @@
   <body>
     <header>
     </header>
-    <main>
+    <main class="col-4">
       <h1>Signup</h1>
-      <form action="backend/signup.php?from=signup" method="POST">
+      <form action="backend/signup.php" method="POST">
         <h4 for="signup-name">Name</h4>
         <input class="form-control" id="signup-name" type="text" name="name" placeholder="name" required>
         <h4>Email adress</h4>
@@ -29,7 +29,7 @@
         
       ?>
 
-      <a class="btn btn-default btn-lg btn-block" href="login.php">Login</a>
+      <a class="btn btn-default btn-lg btn-block border" href="login.php">Login</a>
     </main>
     <footer>
     </footer>

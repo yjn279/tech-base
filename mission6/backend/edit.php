@@ -22,6 +22,8 @@
   $plan = $plans -> get_plan($id);
   $name_id = $plan['users_id'];
 
+  if (empty($image)) $image = $plan['image'];
+
 
   // プランの編集
   if ($user == $name_id) $plans -> edit_plan($id, $title, $schedule, $comment, $image);

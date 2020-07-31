@@ -9,7 +9,7 @@
   <body>
     <header>
     </header>
-    <main>
+    <main class="col-4">
       <h1>Login</h1>
 
       <?php if(!empty($_GET['error'])): ?>
@@ -27,7 +27,7 @@
       <?php include 'libraries/main.php' ?>
       <?php redirect('timeline.php', !empty($_SESSION['user'])) ?>
 
-      <a class="btn btn-defalut btn-lg btn-block" href="signup.php">Signup</a>
+      <a class="btn btn-defalut btn-lg btn-block border" href="signup.php">Signup</a>
     </main>
     <footer>
     </footer>

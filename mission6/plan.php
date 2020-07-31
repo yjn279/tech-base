@@ -40,32 +40,34 @@
 
     ?>
 
-    <main>
-      <a class="btn btn-default btn-lg btn-block" href="timeline.php">Timeline</a>
-      <img class="rounded mx-auto d-block" src="backend/image.php?id=<?= $id ?>" alt="image">
-      <div id="details">
-        <h2><?= $title ?></h2>
-        <pre><?= $schedule ?></pre>
-        <pre><?= $comment ?></pre>
-        <p><?= $date ?></p>
-        <p><?= $name ?></p>
+    <main class="container-fluid">
+      <div class="row">
+        <img class="col-6" src="backend/image.php?id=<?= $id ?>" alt="image">
+        <div class="col-6">
+          <h2><?= $title ?></h2>
+          <pre><?= $schedule ?></pre>
+          <pre><?= $comment ?></pre>
+          <p><?= $date ?></p>
+          <p><?= $name ?></p>
 
 
-        <?php if(empty($_SESSION['user'])): ?>
-          <a class="btn btn-primary btn-lg btn-block" href="login.php">Login</a>
-          <a class="btn btn-default btn-lg btn-block" href="signup.php">Signup</a>
-        <?php else: ?>
-          <!-- <a class="btn btn-primary btn-lg btn-block" href="">Add to calendar</a> -->
-          <a class="btn btn-primary btn-lg btn-block" href="edit.php?id=<?= $id ?>">Edit</a>
+          <?php if(empty($_SESSION['user'])): ?>
+            <a class="btn btn-primary btn-lg btn-block" href="login.php">Login</a>
+            <a class="btn btn-default btn-lg btn-block border" href="signup.php">Signup</a>
+          <?php else: ?>
+            <!-- <a class="btn btn-primary btn-lg btn-block" href="">Add to calendar</a> -->
+            <a class="btn btn-primary btn-lg btn-block" href="edit.php?id=<?= $id ?>">Edit</a>
 
-          <?php if($_SESSION['user'] == $name_id): ?>
-            <a class="btn btn-default btn-lg btn-block" href="backend/delete.php?id=<?= $id ?>">Delete</a>
+            <?php if($_SESSION['user'] == $name_id): ?>
+              <a class="btn btn-default btn-lg btn-block border" href="backend/delete.php?id=<?= $id ?>">Delete</a>
+            <?php endif ?>
+
+            <!-- <p class="btn btn-primary btn-lg btn-block">Add to lists</p> -->
+            <a class="btn btn-default btn-lg btn-block border" href="timeline.php">Timeline</a>
           <?php endif ?>
 
-          <!-- <p class="btn btn-primary btn-lg btn-block">Add to lists</p> -->
-        <?php endif ?>
 
-
+        </div>
       </div>
     </main>
     <footer>

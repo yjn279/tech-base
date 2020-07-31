@@ -17,7 +17,7 @@
 
     ?>
 
-    <main>
+    <main class="col-8">
       <form action="backend/make_plan.php?original=TRUE" method="POST" enctype="multipart/form-data">
         <h4>Title</h4>
         <input class="form-control" type="text" name="title" placeholder="title" required>
@@ -28,7 +28,7 @@
           <textarea class="form-control" name="comment" cols="30" rows="10" placeholder="comment"></textarea>
           <div>
             <h4>Input a image</h4>
-            <input class="form-control" type="file" name="image" accept="image/*">
+            <input class="form-control-file" type="file" name="image" accept="image/*">
             <input class="btn btn-primary btn-lg btn-block" type="submit" value="Make!">
           </div>
         </div>

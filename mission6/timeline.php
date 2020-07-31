@@ -22,32 +22,32 @@
         <div class="col-9 list-group list-group-flush">
 
 
-        <?php $plans = $plans_inst -> get_plans() ?>
+          <?php $plans = $plans_inst -> get_plans() ?>
 
-          <?php foreach ($plans as $plan): ?>
-          <a class="list-group-item list-group-item-action d-flex justify-content-around" href="plan.php?id=<?= $plan['plans_id'] ?>">
-            <img class="" src="backend/image.php?id=<?= $plan['plans_id'] ?>" alt="image">
-            <div class="">
-              <h2><?= $plan['title'] ?></h2>
-              <pre><?= $plan['schedule'] ?></pre>
-              <pre><?= $plan['comment'] ?></pre>
-            </div>
-          </a>
-        <?php endforeach ?>
+            <?php foreach ($plans as $plan): ?>
+            <a class="list-group-item list-group-item-action row d-flex" href="plan.php?id=<?= $plan['plans_id'] ?>">
+              <img class="col-6 " src="backend/image.php?id=<?= $plan['plans_id'] ?>" alt="image">
+              <div class="col-6 p-0">
+                <h2><?= $plan['title'] ?></h2>
+                <pre><?= $plan['schedule'] ?></pre>
+                <pre><?= $plan['comment'] ?></pre>
+              </div>
+            </a>
+          <?php endforeach ?>
 
 
         </div>
-        <div class="col-3">
+        <div class="col-3 pt-5">
 
-        <?php if(empty($_SESSION['user'])): ?>
-          <a class="btn btn-primary btn-lg btn-block" href="login.php">Login</a>
-          <a class="btn btn-default btn-lg btn-block" href="signup.php">Signup</a>
-        <?php else: ?>
-          <!-- <div id="side_calendar">Calendar</div> -->
-          <!-- Lists 実装予定 -->
-          <a class="btn btn-primary btn-lg btn-block" href="make_plan.php">Make a New Plan!</a>
-          <a class="btn btn-default btn-lg btn-block" href="backend/logout.php">Logout</a>
-        <?php endif ?>
+          <?php if(empty($_SESSION['user'])): ?>
+            <a class="btn btn-primary btn-lg btn-block" href="login.php">Login</a>
+            <a class="btn btn-default btn-lg btn-block border" href="signup.php">Signup</a>
+          <?php else: ?>
+            <!-- <div id="side_calendar">Calendar</div> -->
+            <!-- Lists 実装予定 -->
+            <a class="btn btn-primary btn-lg btn-block" href="make_plan.php">Make a New Plan!</a>
+            <a class="btn btn-default btn-lg btn-block border" href="backend/logout.php">Logout</a>
+          <?php endif ?>
 
         </div>
       </div>

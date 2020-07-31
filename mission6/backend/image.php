@@ -16,7 +16,14 @@
   $plan = $plans -> get_plan($id);
   $image = $plan['image'];
 
-  header('Content-Type: image/jpeg');
+
+  // 拡張子を判別
+
+  $handle = finfo_open(FILEINFO_MIME_TYPE);
+  $mime = finfo_buffer($handle, $image);
+  finfo_close($handle);
+
+  header("Content-Type: image/$mime");
   echo $image;
 
 

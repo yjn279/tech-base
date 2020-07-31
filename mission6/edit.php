@@ -42,22 +42,25 @@
 
     ?>
 
-    <main>
-      <form action="<?= $file ?>" method="POST" enctype="multipart/form-data">
-        <h4>Title</h4>
-        <input class="form-control" type="text" name="title" placeholder="Title" value="<?= $title ?>" required>
-        <h4>Schedule</h4>
-        <textarea class="form-control" name="schedule" cols="30" rows="10" placeholder="Schedule" required><?= $schedule ?></textarea>
-          <div>
-            <h4>Comment</h4>
-            <textarea class="form-control" name="comment" cols="30" rows="10" placeholder="Comment"><?= $comment ?></textarea>
+    <main class="container-fluid">
+      <div class="row">
+        <img class="col-6" src="backend/image.php?id=<?= $id ?>" alt="image">
+        <form class="col-6" action="<?= $file ?>" method="POST" enctype="multipart/form-data">
+          <h4>Title</h4>
+          <input class="form-control" type="text" name="title" placeholder="Title" value="<?= $title ?>" required>
+          <h4>Schedule</h4>
+          <textarea class="form-control" name="schedule" cols="30" rows="10" placeholder="Schedule" required><?= $schedule ?></textarea>
             <div>
-            <h4>Input a image</h4>
-            <input class="form-control" type="file" name="image" accept="image/*">  <!-- valueどうする？ -->
-            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Edit">
+              <h4>Comment</h4>
+              <textarea class="form-control" name="comment" cols="30" rows="10" placeholder="Comment"><?= $comment ?></textarea>
+              <div>
+              <h4>Input a image</h4>
+              <input class="form-control-file" type="file" name="image" accept="image/*">  <!-- valueどうする？ -->
+              <input class="btn btn-primary btn-lg btn-block" type="submit" value="Edit">
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </main>
     <footer>
     </footer>

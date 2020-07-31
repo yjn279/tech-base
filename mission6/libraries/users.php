@@ -10,15 +10,26 @@
       $email = $this -> escape($email);
       $password = $this -> escape($password);
 
-      $stmt = $this->pdo -> prepare('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
-      $stmt -> bindParam(':name', $name);
+      $stmt = $this->pdo -> prepare('SELECT users_id FROM users WHERE email=:email');
       $stmt -> bindParam(':email', $email);
-      $stmt -> bindParam(':password', $password);
-      $stmt -> execute();  // 実行が失敗した場合のエラー処理
-      // 既に登録されているアカウントに対するエラー処理
-    
-      return (int) $this->pdo -> lastInsertId();
-    
+      $stmt -> execute();
+      $result = $stmt -> fetch();
+      
+      if (empty($result['users_id'])) {
+
+        $stmt = $this->pdo -> prepare('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
+        $stmt -> bindParam(':name', $name);
+        $stmt -> bindParam(':email', $email);
+        $stmt -> bindParam(':password', $password);
+        $stmt -> execute();  // 実行が失敗した場合のエラー処理
+        // 既に登録されているアカウントに対するエラー処理
+      
+        return (int) $this->pdo -> lastInsertId();
+
+      } else {
+        return -1;
+      }
+
     }
     
     
