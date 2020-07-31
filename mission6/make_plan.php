@@ -10,14 +10,15 @@
     <header>
     </header>
 
-    <?php
-
-      include 'libraries/main.php';  // インクルード
-      redirect('login.php', empty($_SESSION['user']));  // リダイレクト
-
-    ?>
+    <?php include 'libraries/main.php' ?>
+    <?php redirect('login.php', empty($_SESSION['user'])) ?>
 
     <main class="col-8">
+
+      <?php if(!empty($_GET['error'])): ?>
+        <p class="alert alert-danger">画像は10MBまでアップロードできます。</p>
+      <?php endif ?>
+
       <form action="backend/make_plan.php?original=TRUE" method="POST" enctype="multipart/form-data">
         <h4>Title</h4>
         <input class="form-control" type="text" name="title" placeholder="title" required>

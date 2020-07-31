@@ -18,6 +18,7 @@
   $schedule = $_POST['schedule'];
   $comment = $_POST['comment'];
   $image = file_get_contents($_FILES['image']['tmp_name']);
+  $fsize = $_FILES['image']['tmp_name'];
 
   $plan = $plans -> get_plan($id);
   $name_id = $plan['users_id'];
@@ -25,12 +26,16 @@
   if (empty($image)) $image = $plan['image'];
 
 
-  // プランの編集
-  if ($user == $name_id) $plans -> edit_plan($id, $title, $schedule, $comment, $image);
+  // ファイルサイズの確認
 
+  if ($fsize <= 10000000) {
+  
+    if ($user == $name_id) $plans -> edit_plan($id, $title, $schedule, $comment, $image);
+    redirect("../plan.php?id=$id")  // リダイレクト
 
-  // リダイレクト
-  redirect("../plan.php?id=$id")
+  } else {
+    redirect("../edit.php?error=TRUE")  // リダイレクト
+  }
 
 
 ?>

@@ -46,6 +46,11 @@
       <div class="row">
         <img class="col-6" src="backend/image.php?id=<?= $id ?>" alt="image">
         <form class="col-6" action="<?= $file ?>" method="POST" enctype="multipart/form-data">
+
+        <?php if(!empty($_GET['error'])): ?>
+          <p class="alert alert-danger">画像は10MBまでアップロードできます。</p>
+        <?php endif ?>
+
           <h4>Title</h4>
           <input class="form-control" type="text" name="title" placeholder="Title" value="<?= $title ?>" required>
           <h4>Schedule</h4>
