@@ -23,10 +23,22 @@
   $fsize = $_FILES['image']['tmp_name'];
 
 
-  // ファイルサイズの確認
+  if ($original == 'FALSE') {
+
+    $id = $_GET['id'];
+    $img_del = $_POST['img_del'];
+    $plan = $plans -> get_plan($id);
+
+    if (!empty($img_del))  $image = NULL;
+    elseif (empty($image)) $image = $plan['image'];
+
+  }
+
   
+  // ファイルサイズの確認
+
   if ($fsize <= 10000000) {
-    
+  
     $id = $plans -> make_plan($user, $original, $title, $schedule, $comment, $image);  // プランの登録
     redirect("../plan.php?id=$id");  // リダイレクト
 

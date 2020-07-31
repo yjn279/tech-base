@@ -37,7 +37,7 @@
       $file = $_SESSION['user'] == $name_id ? 'edit' : 'make_plan';
 
       if ($user == $name_id) $file = "backend/edit.php?id=$id";
-      else $file = 'backend/make_plan.php?original=FALSE';
+      else $file = "backend/make_plan.php?id=$id&original=FALSE";
 
 
     ?>
@@ -60,7 +60,8 @@
               <textarea class="form-control" name="comment" cols="30" rows="10" placeholder="Comment"><?= $comment ?></textarea>
               <div>
               <h4>Input a image</h4>
-              <input class="form-control-file" type="file" name="image" accept="image/*">  <!-- valueどうする？ -->
+              <input class="form-control-file" type="file" name="img_del" accept="image/*">  <!-- valueどうする？ -->
+              <input class="form-check-input" type="checkbox" name="img_del" value="TRUE">画像を削除
               <input class="btn btn-primary btn-lg btn-block" type="submit" value="Edit">
             </div>
           </div>

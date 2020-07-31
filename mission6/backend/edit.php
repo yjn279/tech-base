@@ -17,13 +17,15 @@
   $title = $_POST['title'];
   $schedule = $_POST['schedule'];
   $comment = $_POST['comment'];
+  $img_del = $_POST['img_del'];
   $image = file_get_contents($_FILES['image']['tmp_name']);
   $fsize = $_FILES['image']['tmp_name'];
 
   $plan = $plans -> get_plan($id);
   $name_id = $plan['users_id'];
 
-  if (empty($image)) $image = $plan['image'];
+  if (!empty($img_del))  $image = NULL;
+  elseif (empty($image)) $image = $plan['image'];
 
 
   // ファイルサイズの確認
