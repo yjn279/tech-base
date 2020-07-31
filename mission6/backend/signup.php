@@ -25,7 +25,7 @@
   
   // セッションの管理
 
-  if (!empty($user) && !empty($name)) {
+  if ($user >= 0 && !empty($name)) {
 
     $_SESSION['user'] = $user;
     $_SESSION['name'] = $name;
