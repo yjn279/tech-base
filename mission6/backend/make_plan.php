@@ -28,10 +28,10 @@
   if ($fsize <= 10000000) {
     
     $id = $plans -> make_plan($user, $original, $title, $schedule, $comment, $image);  // プランの登録
-    redirect("../plan.php?id=$id")  // リダイレクト
+    redirect("../plan.php?id=$id");  // リダイレクト
 
   } else {
-    redirect("../make_paln.php?error=TRUE")  // リダイレクト
+    redirect("../make_paln.php?error=TRUE");  // リダイレクト
   }
 
 

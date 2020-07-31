@@ -31,10 +31,10 @@
   if ($fsize <= 10000000) {
   
     if ($user == $name_id) $plans -> edit_plan($id, $title, $schedule, $comment, $image);
-    redirect("../plan.php?id=$id")  // リダイレクト
+    redirect("../plan.php?id=$id");  // リダイレクト
 
   } else {
-    redirect("../edit.php?error=TRUE")  // リダイレクト
+    redirect("../edit.php?error=TRUE");  // リダイレクト
   }
 
 
