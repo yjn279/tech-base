@@ -11,6 +11,11 @@
     </header>
     <main class="col-4">
       <h1>Signup</h1>
+
+      <?php if(!empty($_GET['error'])): ?>
+        <p class="alert alert-danger">このメールアドレスは既に登録されています。</p>
+      <?php endif ?>
+
       <form action="backend/signup.php" method="POST">
         <h4 for="signup-name">Name</h4>
         <input class="form-control" id="signup-name" type="text" name="name" placeholder="name" required>
@@ -21,15 +26,10 @@
         <input class="btn btn-primary btn-lg btn-block" type="submit" value="Signup">
       </form>
 
-      <?php
-        
-        include 'libraries/main.php';
-        redirect('timeline.php', !empty($_SESSION['user']));
-        message();  // エラー処理
-        
-      ?>
+      <?php include 'libraries/main.php' ?>
+      <?php redirect('timeline.php', !empty($_SESSION['user'])) ?>
 
-      <a class="btn btn-default btn-lg btn-block border" href="login.php">Login</a>
+      <a class="btn btn-defalut btn-lg btn-block border" href="login.php">Login</a>
     </main>
     <footer>
     </footer>
