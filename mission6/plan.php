@@ -42,7 +42,13 @@
 
     <main class="container-fluid">
       <div class="row">
-        <img class="col-6" src="backend/image.php?id=<?= $id ?>" alt="image">
+
+        <?php if(!empty($image)): ?>
+          <img class="col-6" src="backend/image.php?id=<?= $id ?>" alt="image">
+        <?php else: ?>
+          <p class="col-6">No image</p>
+        <?php endif ?>
+
         <div class="col-6">
           <h2><?= $title ?></h2>
           <pre><?= $schedule ?></pre>

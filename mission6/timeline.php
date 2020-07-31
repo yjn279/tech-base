@@ -26,7 +26,13 @@
 
             <?php foreach ($plans as $plan): ?>
             <a class="list-group-item list-group-item-action row d-flex" href="plan.php?id=<?= $plan['plans_id'] ?>">
+
+            <?php if(!empty($plan['image'])): ?>
               <img class="col-6 " src="backend/image.php?id=<?= $plan['plans_id'] ?>" alt="image">
+            <?php else: ?>
+              <p class="col-6">No image</p>
+            <?php endif ?>
+              
               <div class="col-6 p-0">
                 <h2><?= $plan['title'] ?></h2>
                 <pre><?= $plan['schedule'] ?></pre>
