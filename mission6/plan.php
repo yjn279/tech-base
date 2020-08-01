@@ -51,8 +51,8 @@
 
         <div class="col-6">
           <h2><?= $title ?></h2>
-          <pre><?= $schedule ?></pre>
-          <pre><?= $comment ?></pre>
+          <p><?= $schedule ?></p>
+          <p><?= $comment ?></p>
           <p><?= $date ?></p>
           <p><?= $name ?></p>
 
