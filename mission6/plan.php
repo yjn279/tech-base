@@ -40,39 +40,38 @@
 
     ?>
 
-    <main class="container-fluid">
-      <div class="row">
+    <main class="card border-0 p-3">
+      <div class="row no-gutters">
 
         <?php if(!empty($image)): ?>
-          <img class="col-6" src="backend/image.php?id=<?= $id ?>" alt="image">
-        <?php else: ?>
-          <p class="col-6">No image</p>
+          <img class="card-img-top col-lg-6" src="backend/image.php?id=<?= $id ?>" alt="image">
         <?php endif ?>
 
-        <div class="col-6">
-          <h2><?= $title ?></h2>
-          <p><?= $schedule ?></p>
-          <p><?= $comment ?></p>
-          <p><?= $date ?></p>
-          <p><?= $name ?></p>
+        <div class="col-lg-6">
+          <div class="card-body">
+            <h2 class="card-title"><?= $title ?></h2>
+            <p class="card-text"><?= $schedule ?></p>
+            <p class="card-text"><?= $comment ?></p>
+            <p class="card-text"><?= $date ?></p>
+            <p class="card-text"><?= $name ?></p>
 
 
-          <?php if(empty($_SESSION['user'])): ?>
-            <a class="btn btn-primary btn-lg btn-block" href="login.php">Login</a>
-            <a class="btn btn-default btn-lg btn-block border" href="signup.php">Signup</a>
-          <?php else: ?>
-            <!-- <a class="btn btn-primary btn-lg btn-block" href="">Add to calendar</a> -->
-            <a class="btn btn-primary btn-lg btn-block" href="edit.php?id=<?= $id ?>">Edit</a>
+            <?php if(empty($_SESSION['user'])): ?>
+              <a class="btn btn-primary btn-lg btn-block shadow-sm" href="login.php">Login</a>
+              <a class="btn btn-default btn-lg btn-block border shadow-sm" href="signup.php">Signup</a>
+            <?php else: ?>
+              <!-- <a class="btn btn-primary btn-lg btn-block" href="">Add to calendar</a> -->
+              <a class="btn btn-primary btn-lg btn-block shadow-sm" href="edit.php?id=<?= $id ?>">Edit</a>
 
-            <?php if($_SESSION['user'] == $name_id): ?>
-              <a class="btn btn-default btn-lg btn-block border" href="backend/delete.php?id=<?= $id ?>">Delete</a>
+              <?php if($_SESSION['user'] == $name_id): ?>
+                <a class="btn btn-default btn-lg btn-block border shadow-sm" href="backend/delete.php?id=<?= $id ?>">Delete</a>
+              <?php endif ?>
+              <!-- <p class="btn btn-primary btn-lg btn-block">Add to lists</p> -->
+              <a class="btn btn-default btn-lg btn-block border shadow-sm" href="timeline.php">Timeline</a>
             <?php endif ?>
 
-            <!-- <p class="btn btn-primary btn-lg btn-block">Add to lists</p> -->
-            <a class="btn btn-default btn-lg btn-block border" href="timeline.php">Timeline</a>
-          <?php endif ?>
 
-
+          </div>
         </div>
       </div>
     </main>
