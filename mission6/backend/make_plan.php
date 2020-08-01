@@ -19,8 +19,7 @@
   $title = $_POST['title'];
   $schedule = $_POST['schedule'];
   $comment = $_POST['comment'];
-  $image = file_get_contents($_FILES['image']['tmp_name']);
-  $fsize = $_FILES['image']['tmp_name'];
+  $image = $plans -> compress_img($_FILES['image']['tmp_name']);
 
 
   if ($original == 'FALSE') {
@@ -35,16 +34,12 @@
   }
 
   
-  // ファイルサイズの確認
+  // プランの登録
+  $id = $plans -> make_plan($user, $original, $title, $schedule, $comment, $image);
 
-  if ($fsize <= 10000000) {
   
-    $id = $plans -> make_plan($user, $original, $title, $schedule, $comment, $image);  // プランの登録
-    redirect("../plan.php?id=$id");  // リダイレクト
-
-  } else {
-    redirect("../make_paln.php?error=TRUE");  // リダイレクト
-  }
+  // リダイレクト
+  redirect("../plan.php?id=$id");
 
 
 ?>

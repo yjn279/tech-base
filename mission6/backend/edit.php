@@ -12,14 +12,14 @@
 
 
   // データの取得
+  
   $user = $_SESSION['user'];
   $id = $_GET['id'];
   $title = $_POST['title'];
   $schedule = $_POST['schedule'];
   $comment = $_POST['comment'];
   $img_del = $_POST['img_del'];
-  $image = file_get_contents($_FILES['image']['tmp_name']);
-  $fsize = $_FILES['image']['tmp_name'];
+  $image = $plans ->compress_img($_FILES['image']['tmp_name']);
 
   $plan = $plans -> get_plan($id);
   $name_id = $plan['users_id'];
@@ -28,16 +28,12 @@
   elseif (empty($image)) $image = $plan['image'];
 
 
-  // ファイルサイズの確認
+  // プランの編集
+  if ($user == $name_id) $plans -> edit_plan($id, $title, $schedule, $comment, $image);
 
-  if ($fsize <= 10000000) {
-  
-    if ($user == $name_id) $plans -> edit_plan($id, $title, $schedule, $comment, $image);
-    redirect("../plan.php?id=$id");  // リダイレクト
 
-  } else {
-    redirect("../edit.php?error=TRUE");  // リダイレクト
-  }
+  //リダイレクト
+  redirect("../plan.php?id=$id");
 
 
 ?>
