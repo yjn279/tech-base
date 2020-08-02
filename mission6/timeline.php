@@ -10,16 +10,12 @@
     <header>
     </header>
 
-    <?php
-
-      include 'libraries/main.php';
-      $plans_inst = new Plans();
-
-    ?>
+    <?php include 'libraries/main.php' ?>
+    <?php $plans_inst = new Plans() ?>
 
     <main class="container-fluid py-3">
       <div class="row">
-        <div class="col-lg-2 mt-md-5 mb-5">
+        <div class="col-lg-2 mt-lg-5 mb-5">
           <h1 class="text-info text-md-center mb-3">Timeline</h1>
 
           <?php if(empty($_SESSION['user'])): ?>
@@ -37,7 +33,7 @@
         <div class="col-lg-10 card-columns">
 
 
-          <?php $plans = $plans_inst -> get_plans() ?>
+          <?php $plans = $plans_inst -> get_all() ?>
 
           <?php foreach ($plans as $plan): ?>
             <a class="card border-0 text-reset shadow-sm" href="plan.php?id=<?= $plan['plans_id'] ?>">

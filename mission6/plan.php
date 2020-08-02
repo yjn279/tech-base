@@ -44,7 +44,7 @@
       <div class="row no-gutters">
 
         <?php if(!empty($image)): ?>
-          <img class="card-img-top col-lg-6" src="backend/image.php?id=<?= $id ?>" alt="image">
+          <img class="card-img-top col-md-6" src="backend/image.php?id=<?= $id ?>" alt="image">
         <?php endif ?>
 
         <div class="col-md-6 mx-md-auto">

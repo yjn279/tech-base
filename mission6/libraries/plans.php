@@ -71,22 +71,28 @@
     }
     
     
-    function get_plans(string $where=NULL, $condition=NULL, string $select='*') {
+    function get_all() {
     
-      if (isset($where) && isset($condition)) {
-    
-        $stmt = $this->pdo -> prepare("SELECT $select FROM plans WHERE $where = :condition ORDER BY plans_id DESC");
-        // $stmt -> bindParam(':where', $where);
-        $stmt -> bindParam(':condition', $condition);
-        $stmt -> execute();
-        // エラー処理
-    
-      } else {
-        $stmt = $this->pdo -> query("SELECT $select FROM plans ORDER BY plans_id DESC");
-      }
+      $sql = 'SELECT * FROM plans ORDER BY plans_id DESC';
+      $stmt = $this->pdo -> query($sql);
+      
+      return $stmt -> fetchAll();
+
+    }
+
+
+    function get_by_user(string $id) {
+
+      $id = (int) $this -> escape($id);    
+      $stmt = $this->pdo -> prepare('SELECT * FROM plans WHERE users_id = :id');
+      $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
+      $stmt -> execute();
     
       return $stmt -> fetchAll();
-    
+
     }
+
+
+
   }
 ?>

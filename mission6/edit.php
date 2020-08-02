@@ -46,10 +46,10 @@
       <div class="row no-gutters">
 
         <?php if(!empty($image)): ?>
-          <img class="card-img-top col-lg-6" src="backend/image.php?id=<?= $id ?>" alt="image">
+          <img class="card-img-top col-md-6" src="backend/image.php?id=<?= $id ?>" alt="image">
         <?php endif ?>
 
-        <form class="col-lg-6" action="<?= $file ?>" method="POST" enctype="multipart/form-data">
+        <form class="col-md-6" action="<?= $file ?>" method="POST" enctype="multipart/form-data">
           <div class="card-body">
             <h1 class="text-info text-md-center">Edit</h1>
             <div class="input-group mb-3">
