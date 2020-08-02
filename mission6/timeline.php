@@ -19,7 +19,6 @@
 
     <main class="container-fluid py-3">
       <div class="row">
-        <h1 class="text-md-center">Timeline</h1>
         <div class="col-lg-10 card-columns">
 
 
@@ -41,7 +40,8 @@
 
 
         </div>
-        <div class="col-lg-2">
+        <div class="col-lg-2 my-5">
+          <h1 class="text-md-center mb-3">Timeline</h1>
 
           <?php if(empty($_SESSION['user'])): ?>
             <a class="btn btn-primary btn-lg btn-block shadow-sm" href="login.php">Login</a>

@@ -58,7 +58,7 @@
 
             <?php if(empty($_SESSION['user'])): ?>
               <a class="btn btn-primary btn-lg btn-block shadow-sm" href="login.php">Login</a>
-              <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="signup.php">Signup</a>
+              <a class="btn btn-lg btn-block border-primary text-primary shadow-sm mb-3" href="signup.php">Signup</a>
               <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="timeline.php">Timeline</a>
             <?php else: ?>
               <!-- <a class="btn btn-primary btn-lg btn-block" href="">Add to calendar</a> -->
@@ -68,7 +68,7 @@
                 <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="backend/delete.php?id=<?= $id ?>">Delete</a>
               <?php endif ?>
               <!-- <p class="btn btn-primary btn-lg btn-block">Add to lists</p> -->
-              <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="timeline.php">Timeline</a>
+              <a class="btn btn-lg btn-block border-primary text-primary shadow-sm mt-3" href="timeline.php">Timeline</a>
             <?php endif ?>
 
 

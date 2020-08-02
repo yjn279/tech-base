@@ -28,7 +28,8 @@
         <input class="form-control mb-3" type="password" name="password" placeholder="password" required>
         <input class="btn btn-primary btn-lg btn-block mb-2" type="submit" value="Signup">
       </form>
-      <a class="btn btn-lg btn-block border-primary text-primary border" href="login.php">Login</a>
+      <a class="btn btn-lg btn-block border-primary text-primary border mb-3" href="login.php">Login</a>
+      <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="timeline.php">Timeline</a>
     </main>
     <footer>
     </footer>
