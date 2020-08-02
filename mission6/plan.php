@@ -47,9 +47,9 @@
           <img class="card-img-top col-lg-6" src="backend/image.php?id=<?= $id ?>" alt="image">
         <?php endif ?>
 
-        <div class="col-lg-6">
+        <div class="col-md-6 mx-md-auto">
           <div class="card-body">
-            <h2 class="card-title"><?= $title ?></h2>
+            <h2 class="card-title"><?= $title ?>への旅行</h2>
             <p class="card-text"><?= $schedule ?></p>
             <p class="card-text"><?= $comment ?></p>
             <p class="card-text"><?= $date ?></p>

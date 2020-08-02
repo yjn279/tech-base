@@ -46,7 +46,7 @@
             <?php endif ?>
               
               <div class="card-body">
-                <h2 class="card-title text-body"><?= $plan['title'] ?></h2>
+                <h2 class="card-title text-body"><?= $plan['title'] ?>への旅行</h2>
                 <p class="card-text text-secondary"><?= $plan['schedule'] ?></p>
               </div>
             </a>
