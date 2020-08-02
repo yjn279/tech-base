@@ -42,7 +42,7 @@
 
     ?>
 
-    <main class="card border-0 p-3">
+    <main class="card bg-light border-0 p-3">
       <div class="row no-gutters">
 
         <?php if(!empty($image)): ?>
