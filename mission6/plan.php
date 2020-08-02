@@ -6,7 +6,7 @@
     <?php include 'assets/stylesheets.php' ?>
     <title>Plan</title>
   </head>
-  <body>
+  <body class="bg-light">
     <header>
     </header>
 
@@ -58,16 +58,17 @@
 
             <?php if(empty($_SESSION['user'])): ?>
               <a class="btn btn-primary btn-lg btn-block shadow-sm" href="login.php">Login</a>
-              <a class="btn btn-default btn-lg btn-block border shadow-sm" href="signup.php">Signup</a>
+              <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="signup.php">Signup</a>
+              <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="timeline.php">Timeline</a>
             <?php else: ?>
               <!-- <a class="btn btn-primary btn-lg btn-block" href="">Add to calendar</a> -->
               <a class="btn btn-primary btn-lg btn-block shadow-sm" href="edit.php?id=<?= $id ?>">Edit</a>
 
               <?php if($_SESSION['user'] == $name_id): ?>
-                <a class="btn btn-default btn-lg btn-block border shadow-sm" href="backend/delete.php?id=<?= $id ?>">Delete</a>
+                <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="backend/delete.php?id=<?= $id ?>">Delete</a>
               <?php endif ?>
               <!-- <p class="btn btn-primary btn-lg btn-block">Add to lists</p> -->
-              <a class="btn btn-default btn-lg btn-block border shadow-sm" href="timeline.php">Timeline</a>
+              <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="timeline.php">Timeline</a>
             <?php endif ?>
 
 

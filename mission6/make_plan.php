@@ -6,29 +6,26 @@
     <?php include 'assets/stylesheets.php' ?>
     <title>Make a New Plan!</title>
   </head>
-  <body>
+  <body class="bg-light">
     <header>
     </header>
 
     <?php include 'libraries/main.php' ?>
     <?php redirect('login.php', empty($_SESSION['user'])) ?>
 
-    <main class="col-8">
-      <form action="backend/make_plan.php?original=TRUE" method="POST" enctype="multipart/form-data">
+    <main class="col-md-6 mx-auto py-5">
+      <h1 class="text-md-center">Make your new Plan!</h1>
+      <form class="bg-light" action="backend/make_plan.php?original=TRUE" method="POST" enctype="multipart/form-data">
         <h4>Title</h4>
-        <input class="form-control" type="text" name="title" placeholder="title" required>
+        <input class="form-control mb-3" type="text" name="title" placeholder="title" required>
         <h4>Schedule</h4>
-        <textarea class="form-control" name="schedule" cols="30" rows="10" placeholder="schedule" required></textarea>
-        <div>
-          <h4>Comment</h4>
-          <textarea class="form-control" name="comment" cols="30" rows="10" placeholder="comment"></textarea>
-          <div>
-            <h4>Input a image</h4>
-            <input class="form-control-file" type="file" name="image" accept="image/*">
-            <p class="alert alert-warning">画像は3MBまでアップロードできます。</p>
-            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Make!">
-          </div>
-        </div>
+        <textarea class="form-control mb-3" name="schedule" cols="30" rows="10" placeholder="schedule" required></textarea>
+        <h4>Comment</h4>
+        <textarea class="form-control mb-3" name="comment" cols="30" rows="10" placeholder="comment"></textarea>
+        <h4 class="mb-2">Input a image</h4>
+        <input class="form-control-file mb-2" type="file" name="image" accept="image/*">
+        <p class="alert alert-warning mb-3">画像は3MBまでアップロードできます。</p>
+        <input class="btn btn-primary btn-lg btn-block" type="submit" value="Make!">
       </form>
     </main>
     <footer>

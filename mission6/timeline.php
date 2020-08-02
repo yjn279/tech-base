@@ -17,17 +17,16 @@
 
     ?>
 
-    <main class="container-fluid">
+    <main class="container-fluid py-3">
       <div class="row">
-        <div class="col-lg-10 card-columns py-3">
-        <!-- list-group list-group-flush -->
+        <h1 class="text-md-center">Timeline</h1>
+        <div class="col-lg-10 card-columns">
 
 
           <?php $plans = $plans_inst -> get_plans() ?>
 
-            <?php foreach ($plans as $plan): ?>
-            <a class="card border-0 shadow-sm p-0" href="plan.php?id=<?= $plan['plans_id'] ?>">
-            <!-- list-group-item list-group-item-action row d-flex -->
+          <?php foreach ($plans as $plan): ?>
+            <a class="card border-0 shadow-sm text-reset" href="plan.php?id=<?= $plan['plans_id'] ?>">
 
             <?php if(!empty($plan['image'])): ?>
               <img class="card-img-top" src="backend/image.php?id=<?= $plan['plans_id'] ?>" alt="image">
@@ -42,16 +41,16 @@
 
 
         </div>
-        <div class="col-lg-2 pt-5">
+        <div class="col-lg-2">
 
           <?php if(empty($_SESSION['user'])): ?>
             <a class="btn btn-primary btn-lg btn-block shadow-sm" href="login.php">Login</a>
-            <a class="btn btn-default btn-lg btn-block shadow-sm" href="signup.php">Signup</a>
+            <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="signup.php">Signup</a>
           <?php else: ?>
             <!-- <div id="side_calendar">Calendar</div> -->
             <!-- Lists 実装予定 -->
             <a class="btn btn-primary btn-lg btn-block shadow-sm" href="make_plan.php">Make a New Plan!</a>
-            <a class="btn btn-default btn-lg btn-block shadow-sm" href="backend/logout.php">Logout</a>
+            <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="backend/logout.php">Logout</a>
           <?php endif ?>
 
         </div>

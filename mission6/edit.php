@@ -6,7 +6,7 @@
     <?php include 'assets/stylesheets.php' ?>
     <title>Edit</title>
   </head>
-  <body>
+  <body class="bg-light">
     <header>
     </header>
 
@@ -42,24 +42,27 @@
 
     ?>
 
-    <main class="container-fluid">
-      <div class="row">
-        <img class="col-6" src="backend/image.php?id=<?= $id ?>" alt="image">
-        <form class="col-6" action="<?= $file ?>" method="POST" enctype="multipart/form-data">
-          <h4>Title</h4>
-          <input class="form-control" type="text" name="title" placeholder="Title" value="<?= $title ?>" required>
-          <h4>Schedule</h4>
-          <textarea class="form-control" name="schedule" cols="30" rows="10" placeholder="Schedule" required><?= $schedule ?></textarea>
-            <div>
-              <h4>Comment</h4>
-              <textarea class="form-control" name="comment" cols="30" rows="10" placeholder="Comment"><?= $comment ?></textarea>
-              <div>
-              <h4>Input a image</h4>
-              <input class="form-control-file" type="file" name="image" accept="image/*">  <!-- valueどうする？ -->
-              <input class="form-check-input" type="checkbox" name="img_del" value="TRUE">画像を削除
-              <p class="alert alert-warning">画像は3MBまでアップロードできます。</p>
-              <input class="btn btn-primary btn-lg btn-block" type="submit" value="Edit">
-            </div>
+    <main class="card border-0 p-3">
+      <div class="row no-gutters">
+
+        <?php if(!empty($image)): ?>
+          <img class="card-img-top col-lg-6" src="backend/image.php?id=<?= $id ?>" alt="image">
+        <?php endif ?>
+
+        <form class="col-lg-6" action="<?= $file ?>" method="POST" enctype="multipart/form-data">
+          <div class="card-body">
+            <h1 class="text-md-center">Edit</h1>
+            <h4>Title</h4>
+            <input class="form-control mb-3" type="text" name="title" placeholder="Title" value="<?= $title ?>" required>
+            <h4>Schedule</h4>
+            <textarea class="form-control mb-3" name="schedule" cols="30" rows="10" placeholder="Schedule" required><?= $schedule ?></textarea>
+            <h4>Comment</h4>
+            <textarea class="form-control mb-3" name="comment" cols="30" rows="10" placeholder="Comment"><?= $comment ?></textarea>
+            <h4 class="mb-2">Input a image</h4>
+            <input class="form-control-file mb-2" type="file" name="image" accept="image/*">  <!-- valueどうする？ -->
+            <input class="mb-2 mr-2" type="checkbox" name="img_del" value="TRUE">画像を削除
+            <p class="alert alert-warning mb-3">画像は3MBまでアップロードできます。</p>
+            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Edit">
           </div>
         </form>
       </div>
