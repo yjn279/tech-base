@@ -18,9 +18,11 @@
   $title = $_POST['title'];
   $schedule = $_POST['schedule'];
   $comment = $_POST['comment'];
-  $img_del = $_POST['img_del'];
-  $image = $plans ->compress_img($_FILES['image']['tmp_name']);
+  $file = $plans -> compress_img($_FILES['image']['tmp_name']);
+  $image = file_get_contents($file);
 
+  if (!empty($_POST['img_del'])) $img_del = $_POST['img_del'];
+  
   $plan = $plans -> get_plan($id);
   $name_id = $plan['users_id'];
 

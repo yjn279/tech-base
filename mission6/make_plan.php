@@ -14,11 +14,6 @@
     <?php redirect('login.php', empty($_SESSION['user'])) ?>
 
     <main class="col-8">
-
-      <?php if(!empty($_GET['error'])): ?>
-        <p class="alert alert-danger">画像は10MBまでアップロードできます。</p>
-      <?php endif ?>
-
       <form action="backend/make_plan.php?original=TRUE" method="POST" enctype="multipart/form-data">
         <h4>Title</h4>
         <input class="form-control" type="text" name="title" placeholder="title" required>
@@ -30,6 +25,7 @@
           <div>
             <h4>Input a image</h4>
             <input class="form-control-file" type="file" name="image" accept="image/*">
+            <p class="alert alert-warning">画像は3MBまでアップロードできます。</p>
             <input class="btn btn-primary btn-lg btn-block" type="submit" value="Make!">
           </div>
         </div>

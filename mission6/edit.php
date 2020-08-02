@@ -46,11 +46,6 @@
       <div class="row">
         <img class="col-6" src="backend/image.php?id=<?= $id ?>" alt="image">
         <form class="col-6" action="<?= $file ?>" method="POST" enctype="multipart/form-data">
-
-        <?php if(!empty($_GET['error'])): ?>
-          <p class="alert alert-danger">画像は10MBまでアップロードできます。</p>
-        <?php endif ?>
-
           <h4>Title</h4>
           <input class="form-control" type="text" name="title" placeholder="Title" value="<?= $title ?>" required>
           <h4>Schedule</h4>
@@ -60,8 +55,9 @@
               <textarea class="form-control" name="comment" cols="30" rows="10" placeholder="Comment"><?= $comment ?></textarea>
               <div>
               <h4>Input a image</h4>
-              <input class="form-control-file" type="file" name="img_del" accept="image/*">  <!-- valueどうする？ -->
+              <input class="form-control-file" type="file" name="image" accept="image/*">  <!-- valueどうする？ -->
               <input class="form-check-input" type="checkbox" name="img_del" value="TRUE">画像を削除
+              <p class="alert alert-warning">画像は3MBまでアップロードできます。</p>
               <input class="btn btn-primary btn-lg btn-block" type="submit" value="Edit">
             </div>
           </div>

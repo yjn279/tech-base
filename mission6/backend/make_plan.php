@@ -19,7 +19,8 @@
   $title = $_POST['title'];
   $schedule = $_POST['schedule'];
   $comment = $_POST['comment'];
-  $image = $plans -> compress_img($_FILES['image']['tmp_name']);
+  $file = $plans -> compress_img($_FILES['image']['tmp_name']);
+  $image = file_get_contents($file);
 
 
   if ($original == 'FALSE') {
