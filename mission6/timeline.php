@@ -19,6 +19,20 @@
 
     <main class="container-fluid py-3">
       <div class="row">
+        <div class="col-lg-2 mt-md-5 mb-5">
+          <h1 class="text-info text-md-center mb-3">Timeline</h1>
+
+          <?php if(empty($_SESSION['user'])): ?>
+            <a class="btn btn-info btn-lg btn-block shadow-sm" href="login.php">Login</a>
+            <a class="btn btn-lg btn-block border-info text-info shadow-sm" href="signup.php">Signup</a>
+          <?php else: ?>
+            <!-- <div id="side_calendar">Calendar</div> -->
+            <!-- Lists 実装予定 -->
+            <a class="btn btn-info btn-lg btn-block shadow-sm" href="make_plan.php">Make a New Plan!</a>
+            <a class="btn btn-lg btn-block border-info text-info shadow-sm" href="backend/logout.php">Logout</a>
+          <?php endif ?>
+
+        </div>
         <div class="col-lg-10 card-columns">
 
 
@@ -38,20 +52,6 @@
             </a>
           <?php endforeach ?>
 
-
-        </div>
-        <div class="col-lg-2 my-5">
-          <h1 class="text-md-center mb-3">Timeline</h1>
-
-          <?php if(empty($_SESSION['user'])): ?>
-            <a class="btn btn-primary btn-lg btn-block shadow-sm" href="login.php">Login</a>
-            <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="signup.php">Signup</a>
-          <?php else: ?>
-            <!-- <div id="side_calendar">Calendar</div> -->
-            <!-- Lists 実装予定 -->
-            <a class="btn btn-primary btn-lg btn-block shadow-sm" href="make_plan.php">Make a New Plan!</a>
-            <a class="btn btn-lg btn-block border-primary text-primary shadow-sm" href="backend/logout.php">Logout</a>
-          <?php endif ?>
 
         </div>
       </div>

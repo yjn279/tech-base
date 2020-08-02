@@ -51,7 +51,7 @@
 
         <form class="col-lg-6" action="<?= $file ?>" method="POST" enctype="multipart/form-data">
           <div class="card-body">
-            <h1 class="text-md-center">Edit</h1>
+            <h1 class="text-info text-md-center">Edit</h1>
             <h4>Title</h4>
             <input class="form-control mb-3" type="text" name="title" placeholder="Title" value="<?= $title ?>" required>
             <h4>Schedule</h4>
@@ -62,7 +62,7 @@
             <input class="form-control-file mb-2" type="file" name="image" accept="image/*">  <!-- valueどうする？ -->
             <input class="mb-2 mr-2" type="checkbox" name="img_del" value="TRUE">画像を削除
             <p class="alert alert-warning mb-3">画像は3MBまでアップロードできます。</p>
-            <input class="btn btn-primary btn-lg btn-block" type="submit" value="Edit">
+            <input class="btn btn-info btn-lg btn-block" type="submit" value="Edit">
           </div>
         </form>
       </div>
