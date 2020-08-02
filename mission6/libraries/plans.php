@@ -81,10 +81,13 @@
     }
 
 
-    function get_by_user(string $id) {
+    function get_by_user(string $id, bool $ascending=FALSE) {
 
-      $id = (int) $this -> escape($id);    
-      $stmt = $this->pdo -> prepare('SELECT * FROM plans WHERE users_id = :id');
+      $id = (int) $this -> escape($id);
+
+      if ($ascending) $stmt = $this->pdo -> prepare('SELECT * FROM plans WHERE users_id = :id');
+      else $stmt = $this->pdo -> prepare('SELECT * FROM plans WHERE users_id = :id ORDER BY plans_id DESC');
+      
       $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
       $stmt -> execute();
     

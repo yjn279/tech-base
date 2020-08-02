@@ -52,8 +52,7 @@
             <h2 class="card-title"><?= $title ?>への旅行</h2>
             <p class="card-text"><?= $schedule ?></p>
             <p class="card-text"><?= $comment ?></p>
-            <p class="card-text"><?= $date ?></p>
-            <p class="card-text"><?= $name ?></p>
+            <small class="card-text"><?= $date ?> by <?= $name ?></small>
 
 
             <?php if(empty($_SESSION['user'])): ?>

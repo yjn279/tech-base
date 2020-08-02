@@ -20,30 +20,36 @@
     ?>
 
     <main class="py-3">
-    <h1 class="text-info text-md-center mb-3">Mypage</h1>
-    <div class="list-group list-group-flush col-md-10 mx-md-auto">
+      <h1 class="text-info text-md-center mb-3">Mypage</h1>
+      <a class="btn btn-lg col-2 offset-1 border-info text-info" href="timeline.php">Timeline</a>
+      <div class="col-lg-10 mx-lg-auto m-3">
 
 
-      <?php $plans = $plans_inst -> get_by_user($user) ?>
+        <?php $plans = $plans_inst -> get_by_user($user) ?>
 
 
-      <?php foreach ($plans as $plan): ?>
-        <a class="list-group-item list-group-item-action row d-flex bg-light" href="plan.php?id=<?= $plan['plans_id'] ?>">
+        <?php foreach ($plans as $plan): ?>
+          <a class="card border-0 text-reset shadow-sm my-4" href="plan.php?id=<?= $plan['plans_id'] ?>">
+            <div class="row no-gutters justify-content-end">
 
-        <?php if(!empty($plan['image'])): ?>
-          <img class="col-md-6" src="backend/image.php?id=<?= $plan['plans_id'] ?>" alt="image">
-        <?php endif ?>
+              <?php if(!empty($plan['image'])): ?>
+                <img class="card-img-top col-md-6" src="backend/image.php?id=<?= $plan['plans_id'] ?>" alt="image">
+              <?php endif ?>
 
-          <div class="col-md-6">
-            <h2><?= $plan['title'] ?>への旅行</h2>
-            <p class="text-secondary"><?= $plan['schedule'] ?></p>
-            <small><?= $plan['created_at'] ?></small>
-          </div>
-        </a>
-      <?php endforeach ?>
+              <div class="col-md-6">
+                <div class="card-body">
+                  <h2 class="card-title text-body"><?= $plan['title'] ?>への旅行</h2>
+                  <p class="card-text text-secondary"><?= $plan['schedule'] ?></p>
+                  <p class="card-text text-secondary"><?= $plan['comment'] ?></p>
+                  <small class="card-text"><?= $plan['created_at'] ?></small>
+                </div>
+              </div>
+            </div>
+          </a>
+        <?php endforeach ?>
 
 
-    </div>
+      </div>
     </main>
     <footer>
     </footer>
