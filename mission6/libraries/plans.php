@@ -75,14 +75,14 @@
     
       if (isset($where) && isset($condition)) {
     
-        $stmt = $this->pdo -> prepare("SELECT $select FROM plans WHERE $where = :condition");
+        $stmt = $this->pdo -> prepare("SELECT $select FROM plans WHERE $where = :condition ORDER BY plans_id DESC");
         // $stmt -> bindParam(':where', $where);
         $stmt -> bindParam(':condition', $condition);
         $stmt -> execute();
         // エラー処理
     
       } else {
-        $stmt = $this->pdo -> query("SELECT $select FROM plans");
+        $stmt = $this->pdo -> query("SELECT $select FROM plans ORDER BY plans_id DESC");
       }
     
       return $stmt -> fetchAll();
