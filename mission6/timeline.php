@@ -18,6 +18,18 @@
         <div class="col-lg-2 mt-lg-5 mb-5">
           <h1 class="text-info text-md-center mb-3">Timeline</h1>
 
+          <!-- from backend/delete.php -->
+          <?php if(!empty($_GET['from'])): ?>
+            <?php if($_GET['from'] == 'delete'): ?>
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                プランを削除しました。
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            <?php endif ?>
+          <?php endif ?>
+
           <?php if(empty($_SESSION['user'])): ?>
             <a class="btn btn-info btn-lg btn-block" href="login.php">Login</a>
             <a class="btn btn-lg btn-block border-info text-info" href="signup.php">Signup</a>

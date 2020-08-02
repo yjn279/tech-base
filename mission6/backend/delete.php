@@ -24,7 +24,7 @@
 
   
   // リダイレクト
-  redirect('../timeline.php');
+  redirect('../timeline.php?from=delete');
 
   
 ?>
