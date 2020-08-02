@@ -17,7 +17,12 @@
       <h1 class="text-info text-md-center">Make your new Plan!</h1>
       <form class="bg-light" action="backend/make_plan.php?original=TRUE" method="POST" enctype="multipart/form-data">
         <h4>Title</h4>
-        <input class="form-control mb-3" type="text" name="title" placeholder="title" required>
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" name="title" placeholder="title" required>
+          <div class="input-group-append">
+            <span class="input-group-text">への旅行</span>
+          </div>
+        </div>
         <h4>Schedule</h4>
         <textarea class="form-control mb-3" name="schedule" cols="30" rows="10" placeholder="schedule" required></textarea>
         <h4>Comment</h4>

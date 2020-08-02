@@ -52,12 +52,16 @@
         <form class="col-lg-6" action="<?= $file ?>" method="POST" enctype="multipart/form-data">
           <div class="card-body">
             <h1 class="text-info text-md-center">Edit</h1>
-            <h4>Title</h4>
-            <input class="form-control mb-3" type="text" name="title" placeholder="Title" value="<?= $title ?>" required>
+            <div class="input-group mb-3">
+              <input class="form-control" type="text" name="title" placeholder="title" value="<?= $title ?>" required>
+              <div class="input-group-append">
+                <span class="input-group-text">への旅行</span>
+              </div>
+            </div>
             <h4>Schedule</h4>
-            <textarea class="form-control mb-3" name="schedule" cols="30" rows="10" placeholder="Schedule" required><?= $schedule ?></textarea>
+            <textarea class="form-control mb-3" name="schedule" cols="30" rows="10" placeholder="schedule" required><?= $schedule ?></textarea>
             <h4>Comment</h4>
-            <textarea class="form-control mb-3" name="comment" cols="30" rows="10" placeholder="Comment"><?= $comment ?></textarea>
+            <textarea class="form-control mb-3" name="comment" cols="30" rows="10" placeholder="comment"><?= $comment ?></textarea>
             <h4 class="mb-2">Input a image</h4>
             <input class="form-control-file mb-2" type="file" name="image" accept="image/*">  <!-- valueどうする？ -->
             <input class="mb-2 mr-2" type="checkbox" name="img_del" value="TRUE">画像を削除
