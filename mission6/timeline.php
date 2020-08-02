@@ -6,7 +6,7 @@
     <?php include 'assets/stylesheets.php' ?>
     <title>Timeline</title>
   </head>
-  <body>
+  <body class="bg-light">
     <header>
     </header>
 
