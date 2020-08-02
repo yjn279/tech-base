@@ -13,7 +13,7 @@
     <?php include 'libraries/main.php' ?>
     <?php redirect('login.php', empty($_SESSION['user'])) ?>
 
-    <main class="col-md-6 mx-auto py-5">
+    <main class="col-md-6 mx-md-auto py-5">
       <h1 class="text-info text-md-center">Make your new Plan!</h1>
       <form class="bg-light" action="backend/make_plan.php?original=TRUE" method="POST" enctype="multipart/form-data">
         <h4>Title</h4>

@@ -29,7 +29,8 @@
             <!-- <div id="side_calendar">Calendar</div> -->
             <!-- Lists 実装予定 -->
             <a class="btn btn-info btn-lg btn-block" href="make_plan.php">Make a New Plan!</a>
-            <a class="btn btn-lg btn-block border-info text-info" href="backend/logout.php">Logout</a>
+            <a class="btn btn-info btn-lg btn-block" href="mypage.php">Mypage</a>
+            <a class="btn btn-lg btn-block border-info text-info mt-3" href="backend/logout.php">Logout</a>
           <?php endif ?>
 
         </div>
