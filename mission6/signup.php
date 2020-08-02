@@ -16,16 +16,25 @@
       <?php redirect('timeline.php', !empty($_SESSION['user'])) ?>
 
       <?php if(!empty($_GET['error'])): ?>
-        <p class="alert alert-danger">このメールアドレスは既に登録されています。</p>
+        <p>あいうえお</p>
+        <?php if($_GET['error'] == 1): ?>
+          <p class="alert alert-danger">確認用のメールアドレスが一致しません。</p>
+        <?php elseif($_GET['error'] == 2): ?>
+          <p class="alert alert-danger">確認用のパスワードが一致しません。</p>
+        <?php else: ?>
+          <p class="alert alert-danger">このメールアドレスは既に登録されています。</p>
+        <?php endif ?>
       <?php endif ?>
 
       <form action="backend/signup.php" method="POST">
-        <h4 for="signup-name">Name</h4>
-        <input class="form-control mb-3" id="signup-name" type="text" name="name" placeholder="name" required>
+        <h4>Name</h4>
+        <input class="form-control mb-3" type="text" name="name" placeholder="name" required>
         <h4>Email adress</h4>
-        <input class="form-control mb-3" type="email" name="email" placeholder="e-mail" required>
+        <input class="form-control mb-2" type="email" name="email_1" placeholder="e-mail" required>
+        <input class="form-control mb-3" type="email" name="email_2" placeholder="e-mail (confirmation)" required>
         <h4>Password</h4>
-        <input class="form-control mb-3" type="password" name="password" placeholder="password" required>
+        <input class="form-control mb-2" type="password" name="password_1" placeholder="password" required>
+        <input class="form-control mb-3" type="password" name="password_2" placeholder="password" required>
         <input class="btn btn-info btn-lg btn-block mb-2" type="submit" value="Signup">
       </form>
       <a class="btn btn-lg btn-block border-info text-info border mb-4" href="login.php">Login</a>
