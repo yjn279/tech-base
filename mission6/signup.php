@@ -29,7 +29,7 @@
         <input class="btn btn-info btn-lg btn-block mb-2" type="submit" value="Signup">
       </form>
       <a class="btn btn-lg btn-block border-info text-info border mb-4" href="login.php">Login</a>
-      <a class="btn btn-lg btn-block border-info text-info shadow-sm" href="timeline.php">Timeline</a>
+      <a class="btn btn-lg btn-block border-info text-info" href="timeline.php">Timeline</a>
     </main>
     <footer>
     </footer>

@@ -57,20 +57,20 @@
 
 
             <?php if(empty($_SESSION['user'])): ?>
-              <a class="btn btn-info btn-lg btn-block shadow-sm" href="login.php">Login</a>
-              <a class="btn btn-lg btn-block border-info text-info shadow-sm" href="signup.php">Signup</a>
+              <a class="btn btn-info btn-lg btn-block" href="login.php">Login</a>
+              <a class="btn btn-lg btn-block border-info text-info" href="signup.php">Signup</a>
             <?php else: ?>
               <!-- <a class="btn btn-info btn-lg btn-block" href="">Add to calendar</a> -->
-              <a class="btn btn-info btn-lg btn-block shadow-sm" href="edit.php?id=<?= $id ?>">Edit</a>
+              <a class="btn btn-info btn-lg btn-block" href="edit.php?id=<?= $id ?>">Edit</a>
 
               <?php if($_SESSION['user'] == $name_id): ?>
-                <a class="btn btn-lg btn-block border-info text-info shadow-sm" href="backend/delete.php?id=<?= $id ?>">Delete</a>
+                <a class="btn btn-lg btn-block border-info text-info" href="backend/delete.php?id=<?= $id ?>">Delete</a>
               <?php endif ?>
               <!-- <p class="btn btn-info btn-lg btn-block">Add to lists</p> -->
             <?php endif ?>
 
 
-            <a class="btn btn-lg btn-block border-info text-info shadow-sm mt-4" href="timeline.php">Timeline</a>
+            <a class="btn btn-lg btn-block border-info text-info mt-4" href="timeline.php">Timeline</a>
           </div>
         </div>
       </div>

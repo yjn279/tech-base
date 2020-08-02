@@ -23,13 +23,13 @@
           <h1 class="text-info text-md-center mb-3">Timeline</h1>
 
           <?php if(empty($_SESSION['user'])): ?>
-            <a class="btn btn-info btn-lg btn-block shadow-sm" href="login.php">Login</a>
-            <a class="btn btn-lg btn-block border-info text-info shadow-sm" href="signup.php">Signup</a>
+            <a class="btn btn-info btn-lg btn-block" href="login.php">Login</a>
+            <a class="btn btn-lg btn-block border-info text-info" href="signup.php">Signup</a>
           <?php else: ?>
             <!-- <div id="side_calendar">Calendar</div> -->
             <!-- Lists 実装予定 -->
-            <a class="btn btn-info btn-lg btn-block shadow-sm" href="make_plan.php">Make a New Plan!</a>
-            <a class="btn btn-lg btn-block border-info text-info shadow-sm" href="backend/logout.php">Logout</a>
+            <a class="btn btn-info btn-lg btn-block" href="make_plan.php">Make a New Plan!</a>
+            <a class="btn btn-lg btn-block border-info text-info" href="backend/logout.php">Logout</a>
           <?php endif ?>
 
         </div>
@@ -39,7 +39,7 @@
           <?php $plans = $plans_inst -> get_plans() ?>
 
           <?php foreach ($plans as $plan): ?>
-            <a class="card border-0 shadow-sm text-reset" href="plan.php?id=<?= $plan['plans_id'] ?>">
+            <a class="card border-0 text-reset shadow-sm" href="plan.php?id=<?= $plan['plans_id'] ?>">
 
             <?php if(!empty($plan['image'])): ?>
               <img class="card-img-top" src="backend/image.php?id=<?= $plan['plans_id'] ?>" alt="image">
