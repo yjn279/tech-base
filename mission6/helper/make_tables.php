@@ -38,7 +38,7 @@
       comment TEXT,
       image MEDIUMBLOB,
       created_at DATETIME ON UPDATE CURRENT_TIMESTAMP DEFAULT NOW(),
-      users_id INT UNSIGNED NOT NULL
+      user_id INT UNSIGNED NOT NULL
     )',
 
     'calendars (
