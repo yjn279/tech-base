@@ -20,8 +20,6 @@
     ?>
 
     <main class="py-3">
-      <h1 class="text-info text-md-center mb-3">Mypage</h1>
-      <a class="btn btn-lg col-2 offset-1 border-info text-info" href="timeline.php">Timeline</a>
       <div class="col-lg-10 mx-lg-auto m-3">
 
 

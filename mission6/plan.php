@@ -52,23 +52,15 @@
             <h2 class="card-title"><?= $title ?>への旅行</h2>
             <p class="card-text"><?= $schedule ?></p>
             <p class="card-text"><?= $comment ?></p>
-            <small class="card-text"><?= $date ?> by <?= $name ?></small>
+            <small class="card-text">created at <?= $date ?> by <?= $name ?></small>
 
 
-            <?php if(empty($_SESSION['user'])): ?>
-              <a class="btn btn-info btn-lg btn-block" href="login.php">Login</a>
-              <a class="btn btn-lg btn-block border-info text-info" href="signup.php">Signup</a>
-            <?php else: ?>
-              <!-- <a class="btn btn-info btn-lg btn-block" href="">Add to calendar</a> -->
-              <a class="btn btn-info btn-lg btn-block" href="edit.php?id=<?= $id ?>">Edit</a>
-
+            <?php if(!empty($_SESSION['user'])): ?>
               <?php if($_SESSION['user'] == $name_id): ?>
-                <!-- <a class="btn btn-lg btn-block border-info text-info" href="backend/delete.php?id=<?= $id ?>">Delete</a> -->
+                <a class="btn btn-info btn-lg btn-block" href="edit.php?id=<?= $id ?>">プランを変更</a>
                 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-lg btn-block border-info text-info" data-toggle="modal" data-target="#exampleModal">
-                  Delete
-                </button>
+                <button type="button" class="btn btn-lg btn-block border-info text-info" data-toggle="modal" data-target="#exampleModal">削除</button>
 
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -84,19 +76,20 @@
                         一度削除したプランは復元できません。
                       </div>
                       <div class="modal-footer border-0">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <a class="btn btn-danger" href="backend/delete.php?id=<?= $id ?>">Delete</a>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                        <a class="btn btn-danger" href="backend/delete.php?id=<?= $id ?>">削除</a>
                       </div>
                     </div>
                   </div>
                 </div>
 
+              <?php else: ?>
+                <a class="btn btn-info btn-lg btn-block" href="edit.php?id=<?= $id ?>">カスタマイズする</a>
               <?php endif ?>
-              <!-- <p class="btn btn-info btn-lg btn-block">Add to lists</p> -->
             <?php endif ?>
 
 
-            <a class="btn btn-lg btn-block border-info text-info mt-4" href="timeline.php">Timeline</a>
+            <a class="btn btn-lg btn-block border-info text-info mt-4" href="timeline.php">戻る</a>
           </div>
         </div>
       </div>
