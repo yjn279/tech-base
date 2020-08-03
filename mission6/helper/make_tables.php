@@ -42,11 +42,11 @@
     )',
 
     'calendars (
-      calendars_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+      calendar_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       user_id INT UNSIGNED,
       plan_id INT UNSIGNED,
-      from DATE
-      to DATE
+      from_date DATE
+      to_date DATE
     )'
 
   ];
