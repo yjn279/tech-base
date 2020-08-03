@@ -26,9 +26,9 @@
 
     'users (
       user_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-      name CHAR(32),
-      email CHAR(255),
-      password CHAR(64)
+      name CHAR(32) NOT NULL,
+      email CHAR(255) NOT NULL,
+      password CHAR(64) NOT NULL
     )',
 
     'plans (
@@ -43,10 +43,10 @@
 
     'calendars (
       calendar_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-      user_id INT UNSIGNED,
-      plan_id INT UNSIGNED,
-      from_date DATE
-      to_date DATE
+      user_id INT UNSIGNED NOT NULL,
+      plan_id INT UNSIGNED NOT NULL,
+      from_date DATE NOT NULL,
+      to_date DATE NOT NULL
     )'
 
   ];

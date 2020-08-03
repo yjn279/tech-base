@@ -10,12 +10,12 @@
       $email = $this -> escape($email);
       $password = $this -> escape($password);
 
-      $stmt = $this->pdo -> prepare('SELECT users_id FROM users WHERE email=:email');
+      $stmt = $this->pdo -> prepare('SELECT user_id FROM users WHERE email=:email');
       $stmt -> bindParam(':email', $email);
       $stmt -> execute();
       $result = $stmt -> fetch();
       
-      if (empty($result['users_id'])) {
+      if (empty($result['user_id'])) {
 
         $stmt = $this->pdo -> prepare('INSERT INTO users (name, email, password) VALUES(:name, :email, :password)');
         $stmt -> bindParam(':name', $name);
@@ -46,7 +46,7 @@
       if (!empty($result['password'])) {
 
         if ($password == $result['password']) {
-          return array((int) $result['users_id'], $result['name']);
+          return array((int) $result['user_id'], $result['name']);
 
         } else {
           return array(-1, NULL);  // パスワードが一致しない場合
@@ -57,15 +57,15 @@
       }
 
 
-      if ($password == $result['password']) return array((int) $result['users_id'], $result['name']);
-      else return array((int) $result['users_id'], NULL);
+      if ($password == $result['password']) return array((int) $result['user_id'], $result['name']);
+      else return array((int) $result['user_id'], NULL);
     
     }
 
 
     function get_user(int $id) {
 
-      $stmt = $this->pdo -> prepare('SELECT name FROM users WHERE users_id=:id');
+      $stmt = $this->pdo -> prepare('SELECT name FROM users WHERE user_id=:id');
       $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
       $stmt -> execute();
       $result = $stmt -> fetch();

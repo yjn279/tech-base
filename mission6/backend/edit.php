@@ -24,7 +24,7 @@
   if (!empty($_POST['img_del'])) $img_del = $_POST['img_del'];
   
   $plan = $plans -> get_plan($id);
-  $name_id = $plan['users_id'];
+  $name_id = $plan['user_id'];
 
   if (!empty($img_del))  $image = NULL;
   elseif (empty($image)) $image = $plan['image'];

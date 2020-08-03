@@ -28,9 +28,9 @@
       <div class="card-columns">
         <?php $plans = $plans_inst -> get_all() ?>
         <?php foreach ($plans as $plan): ?>
-          <a class="card border-0 text-reset shadow-sm" href="plan.php?id=<?= $plan['plans_id'] ?>">
+          <a class="card border-0 text-reset shadow-sm" href="plan.php?id=<?= $plan['plan_id'] ?>">
             <?php if(!empty($plan['image'])): ?>
-              <img class="card-img-top" src="backend/image.php?id=<?= $plan['plans_id'] ?>" alt="image">
+              <img class="card-img-top" src="backend/image.php?id=<?= $plan['plan_id'] ?>" alt="image">
             <?php endif ?>
             <div class="card-body">
               <h2 class="card-title text-body"><?= $plan['title'] ?>への旅行</h2>

@@ -13,7 +13,7 @@
       // $image = $this -> escape($image);  XSSはどうする？
       $original = $original ? 1 : 0;
 
-      $stmt = $this->pdo -> prepare('INSERT INTO plans (title, schedule, comment, image, users_id, original) VALUES(:title, :schedule, :comment, :image, :user, :original)');
+      $stmt = $this->pdo -> prepare('INSERT INTO plans (title, schedule, comment, image, user_id, original) VALUES(:title, :schedule, :comment, :image, :user, :original)');
       $stmt -> bindParam(':title', $title);
       $stmt -> bindParam(':schedule', $schedule);
       $stmt -> bindParam(':comment', $comment);
@@ -35,7 +35,7 @@
       $comment = $this -> escape($comment);
       // $image = $this -> escape($image);
 
-      $stmt = $this->pdo -> prepare('UPDATE plans SET title=:title, schedule=:schedule, comment=:comment, image=:image WHERE plans_id = :id');
+      $stmt = $this->pdo -> prepare('UPDATE plans SET title=:title, schedule=:schedule, comment=:comment, image=:image WHERE plan_id = :id');
       $stmt -> bindParam(':title', $title);
       $stmt -> bindParam(':schedule', $schedule);
       $stmt -> bindParam(':comment', $comment);
@@ -50,7 +50,7 @@
 
       $id = (int) $this -> escape($id);
 
-      $sql = 'DELETE FROM plans WHERE plans_id=:id';
+      $sql = 'DELETE FROM plans WHERE plan_id=:id';
       $stmt = $this->pdo -> prepare($sql);
       $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
       $stmt -> execute();
@@ -61,7 +61,7 @@
     function get_plan(string $id) {
 
       $id = (int) $this -> escape($id);    
-      $stmt = $this->pdo -> prepare('SELECT * FROM plans WHERE plans_id = :id');
+      $stmt = $this->pdo -> prepare('SELECT * FROM plans WHERE plan_id = :id');
       $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
       $stmt -> execute();
       // エラー処理
@@ -73,7 +73,7 @@
     
     function get_all() {
     
-      $sql = 'SELECT * FROM plans ORDER BY plans_id DESC';
+      $sql = 'SELECT * FROM plans ORDER BY plan_id DESC';
       $stmt = $this->pdo -> query($sql);
       
       return $stmt -> fetchAll();
@@ -85,8 +85,8 @@
 
       $id = (int) $this -> escape($id);
 
-      if ($ascending) $stmt = $this->pdo -> prepare('SELECT * FROM plans WHERE users_id = :id');
-      else $stmt = $this->pdo -> prepare('SELECT * FROM plans WHERE users_id = :id ORDER BY plans_id DESC');
+      if ($ascending) $stmt = $this->pdo -> prepare('SELECT * FROM plans WHERE user_id = :id');
+      else $stmt = $this->pdo -> prepare('SELECT * FROM plans WHERE user_id = :id ORDER BY plan_id DESC');
       
       $stmt -> bindParam(':id', $id, PDO::PARAM_INT);
       $stmt -> execute();

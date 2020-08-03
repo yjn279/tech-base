@@ -34,7 +34,7 @@
       $comment = $plan['comment'];
       $image = $plan['image'];
       $date = $plan['created_at'];
-      $name_id = $plan['users_id'];
+      $name_id = $plan['user_id'];
       $name = $users -> get_user($name_id);
 
 

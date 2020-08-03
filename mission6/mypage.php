@@ -27,11 +27,11 @@
 
 
         <?php foreach ($plans as $plan): ?>
-          <a class="card border-0 text-reset shadow-sm my-4" href="plan.php?id=<?= $plan['plans_id'] ?>">
+          <a class="card border-0 text-reset shadow-sm my-4" href="plan.php?id=<?= $plan['plan_id'] ?>">
             <div class="row no-gutters justify-content-end">
 
               <?php if(!empty($plan['image'])): ?>
-                <img class="card-img-top col-md-6" src="backend/image.php?id=<?= $plan['plans_id'] ?>" alt="image">
+                <img class="card-img-top col-md-6" src="backend/image.php?id=<?= $plan['plan_id'] ?>" alt="image">
               <?php endif ?>
 
               <div class="col-md-6">

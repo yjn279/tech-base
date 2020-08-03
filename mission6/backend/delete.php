@@ -16,7 +16,7 @@
   $id = $_GET['id'];
 
   $plan = $plans -> get_plan($id);
-  $name_id = $plan['users_id'];
+  $name_id = $plan['user_id'];
 
 
   // プランの削除
