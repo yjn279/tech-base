@@ -10,6 +10,14 @@
       $email = $this -> escape($email);
       $password = $this -> escape($password);
 
+
+      // パスワードの暗号化
+
+      $password .= $email;
+      $password = hash('sha256', hash('sha256', $password));
+
+
+
       $stmt = $this->pdo -> prepare('SELECT user_id FROM users WHERE email=:email');
       $stmt -> bindParam(':email', $email);
       $stmt -> execute();
@@ -37,6 +45,13 @@
 
       $email = $this -> escape($email);
       $password = $this -> escape($password);
+
+
+      // パスワードの暗号化
+
+      $password .= $email;
+      $password = hash('sha256', hash('sha256', $password));
+
       
       $stmt = $this->pdo -> prepare('SELECT * FROM users WHERE email=:email');
       $stmt -> bindParam(':email', $email);

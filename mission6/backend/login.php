@@ -22,8 +22,6 @@
   list($user, $name) = $users -> login($email, $password);
 
 
-  // セッションの管理
-
   if ($user >= 0) {
 
     $_SESSION['user'] = $user;
@@ -32,11 +30,14 @@
     $_SESSION['password'] = $password;
 
     redirect('../timeline.php');
-
+echo 'true';
   } elseif ($user == -1) {
     redirect('../login.php?error=1');
-
+echo '1';
   } else {
     redirect('../login.php?error=2');
+    echo '2';
   }
+
+  
 ?>
