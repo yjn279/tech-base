@@ -3,8 +3,10 @@
 
 <!-- header -->
 <?php $url = $_SERVER['REQUEST_URI'] ?>
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-info">
-  <a class="navbar-brand h1 m-0 mr-3" href="timeline.php">Share Trip</a>
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-info py-1">
+  <a class="navbar-brand" href="timeline.php">
+    <img src="assets/navbar-brand-info.jpg" width="120" height="40" alt="">
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
