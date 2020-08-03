@@ -11,7 +11,7 @@
 
   // テーブル詳細表示
 
-  $sql = 'SHOW CREATE TABLE plans';
+  $sql = 'SHOW CREATE TABLE users';
   $result = $pdo -> query($sql);
   
 	foreach ($result as $row){

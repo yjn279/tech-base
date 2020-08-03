@@ -11,10 +11,9 @@
 
   // 投稿表示
 
-  $sql = 'SELECT * FROM plans';
+  $sql = 'SELECT * FROM users';
 
   $stmt = $pdo -> query($sql);
-  $stmt -> execute();
   $results = $stmt -> fetchAll();
 
   var_dump($results);
