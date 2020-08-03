@@ -13,7 +13,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item <?= $url == '/timeline.php' ? 'active' : NULL ?>">
-        <a class="nav-link" href="timeline.php">タイムライン<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="timeline.php">タイムライン</a>
       </li>
       <?php if(empty($_SESSION['user'])): ?>
         <li class="nav-item <?= $url == '/login.php' ? 'active' : NULL ?>">
