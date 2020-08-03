@@ -38,13 +38,27 @@
       $email = $this -> escape($email);
       $password = $this -> escape($password);
       
-      $stmt = $this->pdo -> prepare('SELECT * FROM users WHERE email=:email AND password=:password');
+      $stmt = $this->pdo -> prepare('SELECT * FROM users WHERE email=:email');
       $stmt -> bindParam(':email', $email);
-      $stmt -> bindParam(':password', $password);
       $stmt -> execute();
       $result = $stmt -> fetch();
-    
-      return array((int) $result['users_id'], $result['name']);
+
+      if (!empty($result['password'])) {
+
+        if ($password == $result['password']) {
+          return array((int) $result['users_id'], $result['name']);
+
+        } else {
+          return array(-1, NULL);  // パスワードが一致しない場合
+        }
+
+      } else {
+        return array(-2, NULL);  // アカウントが存在しない場合
+      }
+
+
+      if ($password == $result['password']) return array((int) $result['users_id'], $result['name']);
+      else return array((int) $result['users_id'], NULL);
     
     }
 

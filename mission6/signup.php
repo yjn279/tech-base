@@ -17,7 +17,6 @@
       
 
       <?php if(!empty($_GET['error'])): ?>
-        <p>あいうえお</p>
         <?php if($_GET['error'] == 1): ?>
           <p class="alert alert-danger">確認用のメールアドレスが一致しません。</p>
         <?php elseif($_GET['error'] == 2): ?>

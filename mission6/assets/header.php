@@ -18,7 +18,7 @@
           <a class="nav-link" href="login.php">ログイン</a>
         </li>
         <li class="nav-item <?= $url == '/signup.php' ? 'active' : NULL ?>">
-          <a class="nav-link" href="signup.php">アカウント登録</a>
+          <a class="nav-link" href="signup.php">新規登録</a>
         </li>
       <?php else: ?>
         <li class="nav-item <?= $url == '/mypage.php' ? 'active' : NULL ?>">

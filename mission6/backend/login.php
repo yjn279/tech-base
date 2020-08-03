@@ -24,7 +24,7 @@
 
   // セッションの管理
 
-  if ($user >= 0 && !empty($name)) {
+  if ($user >= 0) {
 
     $_SESSION['user'] = $user;
     $_SESSION['name'] = $name;
@@ -33,9 +33,10 @@
 
     redirect('../timeline.php');
 
+  } elseif ($user == -1) {
+    redirect('../login.php?error=1');
+
   } else {
-
-    redirect('../login.php?error=TRUE');
-
+    redirect('../login.php?error=2');
   }
 ?>
