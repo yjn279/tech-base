@@ -10,7 +10,7 @@
     <header>
     </header>
 
-    <?php include 'libraries/main.php' ?>
+    <?php include 'assets/header.php' ?>
     <?php redirect('login.php', empty($_SESSION['user'])) ?>
 
     <main class="col-md-6 mx-md-auto py-5">

@@ -12,7 +12,7 @@
 
     <?php
 
-      include 'libraries/main.php';
+      include 'assets/header.php';
       $plans_inst = new Plans();
 
       $user = $_SESSION['user'];

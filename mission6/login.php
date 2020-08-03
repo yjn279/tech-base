@@ -7,13 +7,12 @@
     <title>Login</title>
   </head>
   <body class="bg-light">
-    <header>
-    </header>
+
+    <?php include 'assets/header.php' ?>
+    <?php redirect('timeline.php', !empty($_SESSION['user'])) ?>
+    
     <main class="col-lg-4 mx-auto p-5">
       <h1 class="text-info text-center mb-3">Login</h1>
-
-      <?php include 'libraries/main.php' ?>
-      <?php redirect('timeline.php', !empty($_SESSION['user'])) ?>
 
       <?php if(!empty($_GET['error'])): ?>
         <p class="alert alert-danger">メールアドレスまたはパスワードが正しくありません。</p>
