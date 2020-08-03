@@ -37,7 +37,7 @@
       $file = $_SESSION['user'] == $name_id ? 'edit' : 'make_plan';
 
       if ($user == $name_id) $file = "backend/edit.php?id=$id";
-      else $file = "backend/make_plan.php?id=$id&original=FALSE";
+      else $file = "backend/make_plan.php?id=$id";
 
 
     ?>
